@@ -1,0 +1,2639 @@
+swagger: "2.0"
+host: offchain-v2.ensuro.co
+info:
+  title: Offchain API
+  description: Ensuro Offchain API
+  termsOfService: https://ensuro.co/Ensuro_ToS.pdf
+  contact:
+    email: dev@ensuro.co
+  license:
+    name: Apache License
+  version: v2
+schemes:
+  - https
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /etokenblockshots/:
+    get:
+      operationId: etokenblockshots_list
+      description: ""
+      parameters:
+        - name: e_token
+          in: query
+          description: e_token
+          required: false
+          type: string
+        - name: block_number
+          in: query
+          description: block_number
+          required: false
+          type: string
+        - name: timestamp_from
+          in: query
+          description: timestamp_from
+          required: false
+          type: string
+        - name: timestamp_to
+          in: query
+          description: timestamp_to
+          required: false
+          type: string
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: ""
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: "#/definitions/ETokenBlockShot"
+      tags:
+        - etokenblockshots
+    parameters: []
+  /etokenblockshots/by_day/:
+    get:
+      operationId: etokenblockshots_by_day
+      description: ""
+      parameters:
+        - name: e_token
+          in: query
+          description: e_token
+          required: false
+          type: string
+        - name: block_number
+          in: query
+          description: block_number
+          required: false
+          type: string
+        - name: timestamp_from
+          in: query
+          description: timestamp_from
+          required: false
+          type: string
+        - name: timestamp_to
+          in: query
+          description: timestamp_to
+          required: false
+          type: string
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: ""
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: "#/definitions/ETokenBlockShot"
+      tags:
+        - etokenblockshots
+    parameters: []
+  /etokenblockshots/by_week/:
+    get:
+      operationId: etokenblockshots_by_week
+      description: ""
+      parameters:
+        - name: e_token
+          in: query
+          description: e_token
+          required: false
+          type: string
+        - name: block_number
+          in: query
+          description: block_number
+          required: false
+          type: string
+        - name: timestamp_from
+          in: query
+          description: timestamp_from
+          required: false
+          type: string
+        - name: timestamp_to
+          in: query
+          description: timestamp_to
+          required: false
+          type: string
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: ""
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: "#/definitions/ETokenBlockShot"
+      tags:
+        - etokenblockshots
+    parameters: []
+  /etokenblockshots/{id}/:
+    get:
+      operationId: etokenblockshots_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/ETokenBlockShot"
+      tags:
+        - etokenblockshots
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this e token block shot.
+        required: true
+        type: integer
+  /etokens/:
+    get:
+      operationId: etokens_list
+      description: ""
+      parameters:
+        - name: name
+          in: query
+          description: name
+          required: false
+          type: string
+        - name: pool
+          in: query
+          description: pool
+          required: false
+          type: string
+        - name: symbol
+          in: query
+          description: symbol
+          required: false
+          type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters: []
+  /etokens/apy_range/:
+    get:
+      operationId: etokens_apy_range
+      description: ""
+      parameters:
+        - name: name
+          in: query
+          description: name
+          required: false
+          type: string
+        - name: pool
+          in: query
+          description: pool
+          required: false
+          type: string
+        - name: symbol
+          in: query
+          description: symbol
+          required: false
+          type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters: []
+  /etokens/{address}/:
+    get:
+      operationId: etokens_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/apr/:
+    get:
+      operationId: etokens_apr
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/apr_history/:
+    get:
+      operationId: etokens_apr_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/block_shots/:
+    get:
+      operationId: etokens_block_shots
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/composition_history/:
+    get:
+      operationId: etokens_composition_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/liquidity_history/:
+    get:
+      operationId: etokens_liquidity_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/lockup/:
+    get:
+      operationId: etokens_lockup
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/lps_breakdown/:
+    get:
+      operationId: etokens_lps_breakdown
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/net_deposits/:
+    get:
+      operationId: etokens_net_deposits
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/net_deposits_history/:
+    get:
+      operationId: etokens_net_deposits_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/pa_scr_breakdown/:
+    get:
+      operationId: etokens_pa_scr_breakdown
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/scr_breakdown/:
+    get:
+      operationId: etokens_scr_breakdown
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/scr_history/:
+    get:
+      operationId: etokens_scr_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /etokens/{address}/ur_history/:
+    get:
+      operationId: etokens_ur_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/EToken"
+      tags:
+        - etokens
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this e token.
+        required: true
+        type: string
+  /events/:
+    get:
+      operationId: events_list
+      description: ""
+      parameters:
+        - name: name
+          in: query
+          description: name
+          required: false
+          type: string
+        - name: tx__block_number
+          in: query
+          description: tx__block_number
+          required: false
+          type: string
+        - name: contract_address
+          in: query
+          description: contract_address
+          required: false
+          type: string
+        - name: tx__timestamp_from
+          in: query
+          description: Tx timestamp is after
+          required: false
+          type: string
+        - name: tx__timestamp_to
+          in: query
+          description: Tx timestamp is before
+          required: false
+          type: string
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: ""
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: "#/definitions/Event"
+      tags:
+        - events
+    parameters: []
+  /events/alchemy_webhook/:
+    post:
+      operationId: events_alchemy_webhook
+      description: ""
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Event"
+      responses:
+        "201":
+          description: ""
+          schema:
+            $ref: "#/definitions/Event"
+      tags:
+        - events
+    parameters: []
+  /events/{id}/:
+    get:
+      operationId: events_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/Event"
+      tags:
+        - events
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this event.
+        required: true
+        type: integer
+  /lpevents/:
+    get:
+      operationId: lpevents_list
+      description: ""
+      parameters:
+        - name: lp
+          in: query
+          description: lp
+          required: false
+          type: string
+        - name: e_token
+          in: query
+          description: e_token
+          required: false
+          type: string
+        - name: o
+          in: query
+          description: Ordering
+          required: false
+          type: string
+          enum:
+            - timestamp
+            - -timestamp
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: ""
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: "#/definitions/LPEvent"
+      tags:
+        - lpevents
+    parameters: []
+  /lpevents/{event}/:
+    get:
+      operationId: lpevents_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/LPEvent"
+      tags:
+        - lpevents
+    parameters:
+      - name: event
+        in: path
+        description: A unique value identifying this lp event.
+        required: true
+        type: string
+  /lps/:
+    get:
+      operationId: lps_list
+      description: ""
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: ""
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: "#/definitions/LP"
+      tags:
+        - lps
+    parameters: []
+  /lps/{address}/:
+    get:
+      operationId: lps_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/LP"
+      tags:
+        - lps
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this lp.
+        required: true
+        type: string
+  /policies/:
+    get:
+      operationId: policies_list
+      description: ""
+      parameters:
+        - name: rm
+          in: query
+          description: rm
+          required: false
+          type: string
+        - name: status
+          in: query
+          description: status
+          required: false
+          type: string
+          enum:
+            - pending
+            - active
+            - customer_won
+            - pool_won
+            - cancelled
+            - rejected
+            - replaced
+        - name: ensuro_id
+          in: query
+          description: ensuro_id
+          required: false
+          type: string
+        - name: quote_id
+          in: query
+          description: Quote ID
+          required: false
+          type: string
+        - name: start_from
+          in: query
+          description: Policy start is after
+          required: false
+          type: string
+        - name: start_to
+          in: query
+          description: Policy start is before
+          required: false
+          type: string
+        - name: expiration_from
+          in: query
+          description: Policy expiration is after
+          required: false
+          type: string
+        - name: expiration_to
+          in: query
+          description: Policy expiration is before
+          required: false
+          type: string
+        - name: o
+          in: query
+          description: Ordering
+          required: false
+          type: string
+          enum:
+            - Start
+            - -Start
+            - Expiration
+            - -Expiration
+            - Id
+            - -Id
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: ""
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: "#/definitions/Policy"
+      tags:
+        - policies
+    parameters: []
+  /policies/nft/{ensuro_id}/:
+    get:
+      operationId: policies_nft
+      description: ""
+      parameters:
+        - name: rm
+          in: query
+          description: rm
+          required: false
+          type: string
+        - name: status
+          in: query
+          description: status
+          required: false
+          type: string
+          enum:
+            - pending
+            - active
+            - customer_won
+            - pool_won
+            - cancelled
+            - rejected
+            - replaced
+        - name: ensuro_id
+          in: query
+          description: ensuro_id
+          required: false
+          type: string
+        - name: quote_id
+          in: query
+          description: Quote ID
+          required: false
+          type: string
+        - name: start_from
+          in: query
+          description: Policy start is after
+          required: false
+          type: string
+        - name: start_to
+          in: query
+          description: Policy start is before
+          required: false
+          type: string
+        - name: expiration_from
+          in: query
+          description: Policy expiration is after
+          required: false
+          type: string
+        - name: expiration_to
+          in: query
+          description: Policy expiration is before
+          required: false
+          type: string
+        - name: o
+          in: query
+          description: Ordering
+          required: false
+          type: string
+          enum:
+            - Start
+            - -Start
+            - Expiration
+            - -Expiration
+            - Id
+            - -Id
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: ""
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: "#/definitions/Policy"
+      tags:
+        - policies
+    parameters:
+      - name: ensuro_id
+        in: path
+        required: true
+        type: string
+        format: decimal
+  /policies/{id}/:
+    get:
+      operationId: policies_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/Policy"
+      tags:
+        - policies
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this policy.
+        required: true
+        type: integer
+  /pools/:
+    get:
+      operationId: pools_list
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Pool"
+      tags:
+        - pools
+    parameters: []
+  /pools/{address}/:
+    get:
+      operationId: pools_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/Pool"
+      tags:
+        - pools
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this pool.
+        required: true
+        type: string
+  /premiumsaccounts/:
+    get:
+      operationId: premiumsaccounts_list
+      description: ""
+      parameters:
+        - name: name
+          in: query
+          description: name
+          required: false
+          type: string
+        - name: pool
+          in: query
+          description: pool
+          required: false
+          type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters: []
+  /premiumsaccounts/{address}/:
+    get:
+      operationId: premiumsaccounts_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/active_policies/:
+    get:
+      operationId: premiumsaccounts_active_policies
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/active_policies_history/:
+    get:
+      operationId: premiumsaccounts_active_policies_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/active_premiums/:
+    get:
+      operationId: premiumsaccounts_active_premiums
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/active_premiums_history/:
+    get:
+      operationId: premiumsaccounts_active_premiums_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/cashflow/:
+    get:
+      operationId: premiumsaccounts_cashflow
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/composition_history/:
+    get:
+      operationId: premiumsaccounts_composition_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/gwp/:
+    get:
+      operationId: premiumsaccounts_gwp
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/gwp_history/:
+    get:
+      operationId: premiumsaccounts_gwp_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/matured_surplus/:
+    get:
+      operationId: premiumsaccounts_matured_surplus
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/matured_surplus_history/:
+    get:
+      operationId: premiumsaccounts_matured_surplus_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/rm_breakdown/:
+    get:
+      operationId: premiumsaccounts_rm_breakdown
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/scr/:
+    get:
+      operationId: premiumsaccounts_scr
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/scr_history/:
+    get:
+      operationId: premiumsaccounts_scr_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/surplus/:
+    get:
+      operationId: premiumsaccounts_surplus
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/surplus_history/:
+    get:
+      operationId: premiumsaccounts_surplus_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /premiumsaccounts/{address}/wonpremiumsinout/:
+    get:
+      operationId: premiumsaccounts_wonpremiumsinout
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/PremiumsAccount"
+      tags:
+        - premiumsaccounts
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this premiums account.
+        required: true
+        type: string
+  /quotes/:
+    get:
+      operationId: quotes_list
+      description: ""
+      parameters:
+        - name: rm
+          in: query
+          description: rm
+          required: false
+          type: string
+        - name: has_policy
+          in: query
+          description: Quote has policy
+          required: false
+          type: string
+        - name: valid_until_from
+          in: query
+          description: Quote valid_until is after
+          required: false
+          type: string
+        - name: valid_until_to
+          in: query
+          description: Quote valid_until is before
+          required: false
+          type: string
+        - name: expiration_from
+          in: query
+          description: Quote expiration is after
+          required: false
+          type: string
+        - name: expiration_to
+          in: query
+          description: Quote expiration is before
+          required: false
+          type: string
+        - name: o
+          in: query
+          description: Ordering
+          required: false
+          type: string
+          enum:
+            - Valid Until
+            - -Valid Until
+            - Expiration
+            - -Expiration
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: ""
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: "#/definitions/Quote"
+      tags:
+        - quotes
+    parameters: []
+  /quotes/webhook/:
+    post:
+      operationId: quotes_webhook
+      description: ""
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/QuoteMessage"
+      responses:
+        "201":
+          description: ""
+          schema:
+            $ref: "#/definitions/QuoteMessage"
+      tags:
+        - quotes
+    parameters: []
+  /quotes/{id}/:
+    get:
+      operationId: quotes_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/Quote"
+      tags:
+        - quotes
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /riskmodules/:
+    get:
+      operationId: riskmodules_list
+      description: ""
+      parameters:
+        - name: pool
+          in: query
+          description: pool
+          required: false
+          type: string
+        - name: premiums_account
+          in: query
+          description: premiums_account
+          required: false
+          type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters: []
+  /riskmodules/total_premiums/:
+    get:
+      operationId: riskmodules_total_premiums
+      description: ""
+      parameters:
+        - name: pool
+          in: query
+          description: pool
+          required: false
+          type: string
+        - name: premiums_account
+          in: query
+          description: premiums_account
+          required: false
+          type: string
+      responses:
+        "200":
+          description: ""
+      tags:
+        - riskmodules
+    parameters: []
+  /riskmodules/{address}/:
+    get:
+      operationId: riskmodules_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/active_policies/:
+    get:
+      operationId: riskmodules_active_policies
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/active_premiums/:
+    get:
+      operationId: riskmodules_active_premiums
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/cashflow/:
+    get:
+      operationId: riskmodules_cashflow
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/gwp/:
+    get:
+      operationId: riskmodules_gwp
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/gwp_history/:
+    get:
+      operationId: riskmodules_gwp_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/matured_surplus/:
+    get:
+      operationId: riskmodules_matured_surplus
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/matured_surplus_history/:
+    get:
+      operationId: riskmodules_matured_surplus_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/scr/:
+    get:
+      operationId: riskmodules_scr
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/scr_history/:
+    get:
+      operationId: riskmodules_scr_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/surplus/:
+    get:
+      operationId: riskmodules_surplus
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/surplus_history/:
+    get:
+      operationId: riskmodules_surplus_history
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /riskmodules/{address}/wonpremiumsinout/:
+    get:
+      operationId: riskmodules_wonpremiumsinout
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/RiskModule"
+      tags:
+        - riskmodules
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this risk module.
+        required: true
+        type: string
+  /wallet/:
+    get:
+      operationId: wallet_list
+      description: ""
+      parameters:
+        - name: status
+          in: query
+          description: status
+          required: false
+          type: string
+          enum:
+            - unknown
+            - kyc_pending
+            - kyc_verified
+            - kyc_failed
+            - kyc_approved
+            - whitelist
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Wallet"
+      tags:
+        - wallet
+    post:
+      operationId: wallet_create
+      description: ""
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Wallet"
+      responses:
+        "201":
+          description: ""
+          schema:
+            $ref: "#/definitions/Wallet"
+      tags:
+        - wallet
+    parameters: []
+  /wallet/access_token/:
+    post:
+      operationId: wallet_access_token
+      description: ""
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Wallet"
+      responses:
+        "201":
+          description: ""
+          schema:
+            $ref: "#/definitions/Wallet"
+      tags:
+        - wallet
+    parameters: []
+  /wallet/webhook/:
+    post:
+      operationId: wallet_webhook
+      description: ""
+      parameters: []
+      responses:
+        "201":
+          description: ""
+      tags:
+        - wallet
+    parameters: []
+  /wallet/{address}/:
+    get:
+      operationId: wallet_read
+      description: ""
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/Wallet"
+      tags:
+        - wallet
+    put:
+      operationId: wallet_update
+      description: ""
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Wallet"
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/Wallet"
+      tags:
+        - wallet
+    patch:
+      operationId: wallet_partial_update
+      description: ""
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Wallet"
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/Wallet"
+      tags:
+        - wallet
+    delete:
+      operationId: wallet_delete
+      description: ""
+      parameters: []
+      responses:
+        "204":
+          description: ""
+      tags:
+        - wallet
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this wallet.
+        required: true
+        type: string
+  /wallet/{address}/refresh/:
+    post:
+      operationId: wallet_refresh
+      description: ""
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Wallet"
+      responses:
+        "201":
+          description: ""
+          schema:
+            $ref: "#/definitions/Wallet"
+      tags:
+        - wallet
+    parameters:
+      - name: address
+        in: path
+        description: A unique value identifying this wallet.
+        required: true
+        type: string
+definitions:
+  ETokenBlockShot:
+    required:
+      - e_token
+      - block_number
+      - timestamp
+      - total_supply
+      - scr
+      - token_interest_rate
+      - current_scale
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      e_token:
+        title: E token
+        type: string
+        format: uri
+      block_number:
+        title: Block number
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      timestamp:
+        title: Timestamp
+        type: string
+        format: date-time
+      total_supply:
+        title: Total supply
+        type: string
+        format: decimal
+      scr:
+        title: Scr
+        type: string
+        format: decimal
+      token_interest_rate:
+        title: Token interest rate
+        type: string
+        format: decimal
+      current_scale:
+        title: Current scale
+        type: string
+        format: decimal
+  Whitelist:
+    required:
+      - address
+      - name
+    type: object
+    properties:
+      address:
+        title: Address
+        type: string
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+      implementation:
+        title: Implementation
+        type: string
+        maxLength: 40
+        x-nullable: true
+  EToken:
+    required:
+      - address
+      - name
+      - symbol
+      - pool
+      - jr_for_pas
+      - sr_for_pas
+      - whitelist
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      address:
+        title: Address
+        type: string
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+      symbol:
+        title: Symbol
+        type: string
+        maxLength: 20
+        minLength: 1
+      pool:
+        title: Pool
+        type: string
+        format: uri
+      description:
+        title: Description
+        type: string
+      jr_for_pas:
+        type: array
+        items:
+          type: string
+          format: uri
+        uniqueItems: true
+      sr_for_pas:
+        type: array
+        items:
+          type: string
+          format: uri
+        uniqueItems: true
+      jr_etks:
+        title: Jr etks
+        type: string
+        readOnly: true
+      sr_etks:
+        title: Sr etks
+        type: string
+        readOnly: true
+      whitelist:
+        $ref: "#/definitions/Whitelist"
+      logo:
+        title: Logo
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
+      links:
+        title: Links
+        type: string
+        readOnly: true
+      custom_data:
+        title: Custom data
+        type: object
+  Tx:
+    required:
+      - block_number
+      - hash
+      - timestamp
+    type: object
+    properties:
+      block_number:
+        title: Block number
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      hash:
+        title: Hash
+        type: string
+        maxLength: 64
+        minLength: 1
+      timestamp:
+        title: Timestamp
+        type: string
+        format: date-time
+  Event:
+    required:
+      - tx
+      - log_index
+      - name
+      - contract_address
+      - args
+    type: object
+    properties:
+      tx:
+        $ref: "#/definitions/Tx"
+      log_index:
+        title: Log index
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+      contract_address:
+        title: Contract address
+        type: string
+      args:
+        title: Args
+        type: object
+  EventSerializerShort:
+    required:
+      - tx
+      - log_index
+      - name
+    type: object
+    properties:
+      tx:
+        $ref: "#/definitions/Tx"
+      log_index:
+        title: Log index
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+  LPEvent:
+    required:
+      - lp
+      - event
+      - e_token
+      - event_type
+      - amount
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      lp:
+        title: Lp
+        type: string
+        format: uri
+      event:
+        $ref: "#/definitions/EventSerializerShort"
+      e_token:
+        title: E token
+        type: string
+        format: uri
+      event_type:
+        title: Event type
+        type: string
+        enum:
+          - deposit
+          - withdraw
+          - transfer_in
+          - transfer_out
+      amount:
+        title: Amount
+        type: string
+        format: decimal
+  SimplifiedEtoken:
+    required:
+      - address
+      - name
+      - symbol
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      address:
+        title: Address
+        type: string
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+      symbol:
+        title: Symbol
+        type: string
+        maxLength: 20
+        minLength: 1
+  LPNetDeposits:
+    required:
+      - e_token
+      - net_deposits
+    type: object
+    properties:
+      e_token:
+        $ref: "#/definitions/SimplifiedEtoken"
+      net_deposits:
+        title: Net deposits
+        type: string
+        format: decimal
+  LP:
+    required:
+      - address
+    type: object
+    properties:
+      address:
+        title: Address
+        type: string
+      net_deposits:
+        type: array
+        items:
+          $ref: "#/definitions/LPNetDeposits"
+        readOnly: true
+  PolicyEvent:
+    required:
+      - event_type
+    type: object
+    properties:
+      tx_hash:
+        title: Tx hash
+        type: string
+        readOnly: true
+      timestamp:
+        title: Timestamp
+        type: string
+        readOnly: true
+      event_type:
+        title: Event type
+        type: string
+        enum:
+          - creation
+          - expiration
+          - resolution
+          - cancelation
+          - rebalance
+          - replacement
+      log_index:
+        title: Log index
+        type: string
+        readOnly: true
+  Policy:
+    required:
+      - rm
+      - premium
+      - payout
+      - loss_prob
+      - jr_scr
+      - sr_scr
+      - pure_premium
+      - ensuro_commission
+      - partner_commission
+      - jr_coc
+      - sr_coc
+      - start
+      - expiration
+      - events
+      - replaces
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      ensuro_id:
+        title: Ensuro id
+        type: string
+        format: decimal
+        x-nullable: true
+      rm:
+        title: Rm
+        type: string
+        format: uri
+      quote:
+        title: Quote
+        type: string
+        format: uri
+        x-nullable: true
+      premium:
+        title: Premium
+        type: string
+        format: decimal
+      payout:
+        title: Payout
+        type: string
+        format: decimal
+      loss_prob:
+        title: Loss prob
+        type: string
+        format: decimal
+      jr_scr:
+        title: Jr scr
+        type: string
+        format: decimal
+      sr_scr:
+        title: Sr scr
+        type: string
+        format: decimal
+      pure_premium:
+        title: Pure premium
+        type: string
+        format: decimal
+      ensuro_commission:
+        title: Ensuro commission
+        type: string
+        format: decimal
+      partner_commission:
+        title: Partner commission
+        type: string
+        format: decimal
+      jr_coc:
+        title: Jr coc
+        type: string
+        format: decimal
+      sr_coc:
+        title: Sr coc
+        type: string
+        format: decimal
+      start:
+        title: Start
+        type: string
+        format: date-time
+      expiration:
+        title: Expiration
+        type: string
+        format: date-time
+      status:
+        title: Status
+        type: string
+        enum:
+          - pending
+          - active
+          - customer_won
+          - pool_won
+          - cancelled
+          - rejected
+          - replaced
+      actual_payout:
+        title: Actual payout
+        type: string
+        format: decimal
+        x-nullable: true
+      events:
+        type: array
+        items:
+          $ref: "#/definitions/PolicyEvent"
+      replaces:
+        title: Replaces
+        type: string
+        format: uri
+      replaced_by:
+        title: Replaced by
+        type: string
+        format: uri
+        readOnly: true
+  Chain:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+  Pool:
+    required:
+      - address
+      - name
+      - currency_addr
+      - chain
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      address:
+        title: Address
+        type: string
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+      currency_addr:
+        title: Currency addr
+        type: string
+      access_addr:
+        title: Access addr
+        type: string
+        readOnly: true
+      chain:
+        $ref: "#/definitions/Chain"
+  PremiumsAccount:
+    required:
+      - address
+      - name
+      - pool
+    type: object
+    properties:
+      address:
+        title: Address
+        type: string
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+      pool:
+        title: Pool
+        type: string
+        format: uri
+      description:
+        title: Description
+        type: string
+      jr_etk:
+        title: Jr etk
+        type: string
+        format: uri
+        x-nullable: true
+      sr_etk:
+        title: Sr etk
+        type: string
+        format: uri
+        x-nullable: true
+      logo:
+        title: Logo
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
+      links:
+        title: Links
+        type: string
+        readOnly: true
+      custom_data:
+        title: Custom data
+        type: object
+  Quote:
+    required:
+      - rm
+      - policy
+      - payout
+      - loss_prob
+      - expiration
+      - valid_until
+      - data_hash
+    type: object
+    properties:
+      id:
+        title: Id
+        description: Unique ID generated by the quote-api for each quote
+        type: string
+        format: uuid
+        readOnly: true
+      rm:
+        title: Rm
+        type: string
+        format: uri
+      policy:
+        title: Policy
+        type: string
+        format: uri
+      payout:
+        title: Payout
+        type: string
+        format: decimal
+      premium:
+        title: Premium
+        type: string
+        format: decimal
+        x-nullable: true
+      loss_prob:
+        title: Loss prob
+        type: string
+        format: decimal
+      expiration:
+        title: Expiration
+        type: string
+        format: date-time
+      valid_until:
+        title: Valid until
+        type: string
+        format: date-time
+      data:
+        title: Data
+        type: object
+      data_hash:
+        title: Data hash
+        description: "Calculated as keccak stable_json(data | {'quote_id': self.id})"
+        type: string
+        maxLength: 64
+        minLength: 1
+  QuoteMessage:
+    required:
+      - data_hash
+      - loss_prob
+      - payout
+      - valid_until
+      - policy_expiration
+      - risk_module
+      - quote_id
+    type: object
+    properties:
+      data:
+        title: Data
+        type: object
+      data_hash:
+        title: Data hash
+        type: string
+      loss_prob:
+        title: Loss prob
+        type: string
+        format: decimal
+      payout:
+        title: Payout
+        type: string
+        format: decimal
+      premium:
+        title: Premium
+        type: string
+        format: decimal
+        x-nullable: true
+      valid_until:
+        title: Valid until
+        type: string
+        format: date-time
+      policy_expiration:
+        title: Policy expiration
+        type: string
+        format: date-time
+      risk_module:
+        title: Risk module
+        type: string
+      quote_id:
+        title: Quote id
+        type: string
+        format: uuid
+  RiskModule:
+    required:
+      - address
+      - name
+      - pool
+      - premiums_account
+    type: object
+    properties:
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      address:
+        title: Address
+        type: string
+      name:
+        title: Name
+        type: string
+        maxLength: 40
+        minLength: 1
+      pool:
+        title: Pool
+        type: string
+        format: uri
+      premiums_account:
+        title: Premiums account
+        type: string
+        format: uri
+      jr_etk:
+        title: Jr etk
+        type: string
+        format: uri
+        readOnly: true
+      sr_etk:
+        title: Sr etk
+        type: string
+        format: uri
+        readOnly: true
+      description:
+        title: Description
+        type: string
+      logo:
+        title: Logo
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
+      links:
+        title: Links
+        type: string
+        readOnly: true
+      custom_data:
+        title: Custom data
+        type: object
+  Wallet:
+    required:
+      - address
+      - message
+      - signature
+    type: object
+    properties:
+      address:
+        title: Address
+        type: string
+      message:
+        title: Message
+        type: string
+      signature:
+        title: Signature
+        type: string
+        maxLength: 132
+      kyc_inquiry_id:
+        title: Kyc inquiry id
+        type: string
+        maxLength: 32
+      status:
+        title: Status
+        type: string
+        enum:
+          - unknown
+          - kyc_pending
+          - kyc_verified
+          - kyc_failed
+          - kyc_approved
+          - whitelist
+        readOnly: true
+      email:
+        title: Email
+        type: string
+        format: email
+        maxLength: 254
+      data:
+        title: Data
+        type: object

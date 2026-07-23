@@ -1,0 +1,377 @@
+swagger: "2.0"
+info:
+  contact:
+    email: dev@ensuro.co
+  title: ensuro-policy-quote - OpenAPI 2.0
+  version: 0.0.2
+basePath: /api/v0
+
+securityDefinitions:
+  api_key_header:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
+
+schemes:
+  - https
+
+paths:
+  
+  # Backwards compatible path: /example is the same as /example/quote
+  /example:
+    post:
+      summary: Create a new quote
+      operationId: example-legacy-endpoint-quote-post
+      x-google-backend:
+        address: https://example-pricing-api.ensuro.co/quote
+        deadline: 30.0
+      security:
+        - api_key_header: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - description: Quote parameters
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/QuoteRequest"
+        - description: Unsigned
+          in: query
+          name: unsigned
+          required: false
+          allowEmptyValue: true
+          type: boolean
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            $ref: "#/definitions/Quote"
+        "400":
+          description: Invalid input
+    options:
+      summary: Get information about this instance
+      operationId: example-options
+      x-google-backend:
+        address: https://example-pricing-api.ensuro.co/
+        deadline: 30.0
+      security: []  # Open for CORS
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            $ref: "#/definitions/OptionsResponse"
+  /example/quote:
+    post:
+      summary: Create a new quote
+      operationId: example-quote-post
+      x-google-backend:
+        address: https://example-pricing-api.ensuro.co/quote
+        deadline: 30.0
+      security:
+        - api_key_header: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - description: Quote parameters
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/QuoteRequest"
+        - description: Unsigned
+          in: query
+          name: unsigned
+          required: false
+          allowEmptyValue: true
+          type: boolean
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            $ref: "#/definitions/Quote"
+        "400":
+          description: Invalid input
+  
+  /example/new-policy:
+    post:
+      summary: Create a new policy
+      operationId: example-new-policy-post
+      x-google-backend:
+        address: https://example-pricing-api.ensuro.co/new-policy
+        deadline: 30.0
+      security:
+        - api_key_header: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - description: Policy parameters
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/QuoteRequest"
+        - description: |
+            EIP-191 signature of the body digest (SHA256 of the body, without leading '0x'). The signature must be made
+            by an authorized signer. Signature format: r+s+v in hexadecimal. Example:
+            "0xc9a9d2e9ebf6a9930705c4517ff7ae6aa91a4799df8f87189488e1f1396080c76cbeb698c047af21ee94d2c5bb89f72a56fb70ac58f1c2b7245e9d2b400c243f1b"
+
+            This is the preferred signing method. Only one of X-EIP191-Signature or X-Ensuro-Signature must be provided.
+
+          in: header
+          name: X-EIP191-Signature
+          required: false
+          type: string
+          pattern: '0x[0-9a-f]{130}'
+        - description: |
+            HMAC-SHA256 signature of the body, using the shared secret provided. The signature must be in hexadecimal,
+            without including the leading "0x", for example:
+            "41deed7140512b0d351a588d05bff44dfdc58a6a038b47edf4f5e944dd1185d6" will be the signature for body
+            '{"foo":"bar"}' and secret 'topsecret'.
+
+            This method is not recommended, use X-EIP191-Signature whenever possible. Only one of X-EIP191-Signature or X-Ensuro-Signature must be provided.
+
+          in: header
+          name: X-Ensuro-Signature
+          required: false
+          type: string
+          pattern: '[0-9a-f]{64}'
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            $ref: "#/definitions/Quote"
+        "400":
+          description: Invalid input
+  /example/resolve-policy:
+    post:
+      summary: Resolve a policy
+      operationId: example-resolve-policy-post
+      x-google-backend:
+        address: https://example-pricing-api.ensuro.co/resolve-policy
+        deadline: 30.0
+      security:
+        - api_key_header: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - description: Policy resolution
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/ResolutionRequest"
+        - description: |
+            EIP-191 signature of the body digest (SHA256 of the body, without leading '0x'). The signature must be made
+            by an authorized signer. Signature format: r+s+v in hexadecimal. Example:
+            "0xc9a9d2e9ebf6a9930705c4517ff7ae6aa91a4799df8f87189488e1f1396080c76cbeb698c047af21ee94d2c5bb89f72a56fb70ac58f1c2b7245e9d2b400c243f1b"
+
+            This is the preferred signing method. Only one of X-EIP191-Signature or X-Ensuro-Signature must be provided.
+
+          in: header
+          name: X-EIP191-Signature
+          required: false
+          type: string
+          pattern: '0x[0-9a-f]{130}'
+        - description: |
+            HMAC-SHA256 signature of the body, using the shared secret provided. The signature must be in hexadecimal,
+            without including the leading "0x", for example:
+            "41deed7140512b0d351a588d05bff44dfdc58a6a038b47edf4f5e944dd1185d6" will be the signature for body
+            '{"foo":"bar"}' and secret 'topsecret'.
+
+            This method is not recommended, use X-EIP191-Signature whenever possible. Only one of X-EIP191-Signature or X-Ensuro-Signature must be provided.
+
+          in: header
+          name: X-Ensuro-Signature
+          required: false
+          type: string
+          pattern: '[0-9a-f]{64}'
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            $ref: "#/definitions/ResolutionResponse"
+        "400":
+          description: Invalid input
+
+  /example/replace-policy:
+    post:
+      summary: Replace a policy
+      operationId: example-replace-policy-post
+      x-google-backend:
+        address: https://example-pricing-api.ensuro.co/replace-policy
+        deadline: 30.0
+      security:
+        - api_key_header: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - description: Replacement parameters
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/ReplacementRequest"
+        - description: |
+            EIP-191 signature of the body digest (SHA256 of the body, without leading '0x'). The signature must be made
+            by an authorized signer. Signature format: r+s+v in hexadecimal. Example:
+            "0xc9a9d2e9ebf6a9930705c4517ff7ae6aa91a4799df8f87189488e1f1396080c76cbeb698c047af21ee94d2c5bb89f72a56fb70ac58f1c2b7245e9d2b400c243f1b"
+
+            This is the preferred signing method. Only one of X-EIP191-Signature or X-Ensuro-Signature must be provided.
+
+          in: header
+          name: X-EIP191-Signature
+          required: false
+          type: string
+          pattern: '0x[0-9a-f]{130}'
+        - description: |
+            HMAC-SHA256 signature of the body, using the shared secret provided. The signature must be in hexadecimal,
+            without including the leading "0x", for example:
+            "41deed7140512b0d351a588d05bff44dfdc58a6a038b47edf4f5e944dd1185d6" will be the signature for body
+            '{"foo":"bar"}' and secret 'topsecret'.
+
+            This method is not recommended, use X-EIP191-Signature whenever possible. Only one of X-EIP191-Signature or X-Ensuro-Signature must be provided.
+
+          in: header
+          name: X-Ensuro-Signature
+          required: false
+          type: string
+          pattern: '[0-9a-f]{64}'
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            $ref: "#/definitions/Quote"
+        "400":
+          description: Invalid input
+  
+  
+
+definitions:
+  Quote:
+    type: object
+    properties:
+      quote_id:
+        description: Quote unique identifier, used across Ensuro's APIs
+        type: string
+        example: "c06bec3e-6984-49d8-a866-b27e0cbf1f4d"
+      data_hash:
+        description: Hash that uniquely identifies this policy
+        type: string
+        example: "0x0a39ddc02112fd46bdd9be79f4e13f558aaf9ce02467e4b6ea7ee8a896f89008"
+      loss_prob:
+        description: Loss probability for the policy, 0 < loss_prob < 1
+        type: string
+        example: "0.105"
+      premium:
+        description: The premium that must be sent to the contract. If null send MAX_UINT256
+        type: string
+        example: "19.9"
+      bucket_id:
+        description: "[optional] Pricing bucket id, only if the riskmodule is a SignedBucketRiskModule"
+        type: string
+        example: "Bucket1"
+      signature:
+        $ref: "#/definitions/Signature"
+      valid_until:
+        description: Quote expiration as seconds since epoch
+        type: integer
+        example: 1665447869
+  Signature:
+    type: object
+    properties:
+      hash:
+        example: "0x655daa61a6cf9d65d07329ec011c22650a05b526fb41c9b1683956e7b241a2bf"
+        type: string
+      r:
+        example: "0xfa77cd0f2d12287d1d9e0ef367e411e8d02f59890c2977f5bdc3f1dbf30aab54"
+        type: string
+      vs:
+        example: "0x50d6f317112b224daf7efc73ac4f294358314fe53d423a672d56844c4d6843e9"
+        type: string
+  QuoteRequest:
+    type: object
+    properties:
+      data:
+        type: object
+        example:
+          internal_id: "ac3b3fe475"
+          arrival: "2022-10-12T14:36:07.00Z"
+          channel: "website"
+          departure: "2022-10-12T11:36:07.00Z"
+      expiration:
+        type: string
+        format: date-time
+        example: "2022-10-27T21:36:07.211025Z"
+      payout:
+        type: string
+        example: "190.25"
+  OptionsResponse:
+    type: object
+    properties:
+      risk_module:
+        example: "0x79D1cA16Cf39367f9d7A66974ee2627f45857029"
+        type: string
+      signer:
+        example: "0x79D1cA16Cf39367f9d7A66974ee2627f45857029"
+        type: string
+      decimals:
+        example: 6
+        type: integer
+      topic:
+        example: "dynamic-pricing"
+        type: string
+    example:
+      risk_module: "0x79D1cA16Cf39367f9d7A66974ee2627f45857029"
+      signer: "0x79D1cA16Cf39367f9d7A66974ee2627f45857029"
+      decimals: 6
+      topic: "dynamic-pricing"
+  ResolutionResponse:
+    type: object
+    properties:
+      status:
+        example: "QUEUED"
+        type: string
+  ResolutionRequest:
+    type: object
+    properties:
+      ensuro_id:
+        example: "55290711940124341656440444382658655728151858290209621141129482339851750871896"
+        type: string
+      payout:
+        example: "105.25"
+        type: string
+  ReplacementResponse:
+    type: object
+    properties:
+      status:
+        example: "QUEUED"
+        type: string
+      quote:
+        $ref: "#/definitions/Quote"
+      signature:
+        $ref: "#/definitions/Signature"
+  ReplacementRequest:
+    allOf:
+      - $ref: "#/definitions/QuoteRequest"
+      - type: object
+        required:
+          - old_ensuro_id
+        properties:
+          old_ensuro_id:
+            example: "55290711940124341656440444382658655728151858290209621141129482339851750871896"
+            type: string
