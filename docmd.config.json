@@ -1,0 +1,8 @@
+{
+  "title": "Ensuro Documentation",
+  "src": ".",
+  "out": "site",
+  "plugins": {
+    "math": true
+  }
+}

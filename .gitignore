@@ -2,4 +2,5 @@ __pycache__/
 *.pyc
 .venv/
 site/
+node_modules/
 .DS_Store

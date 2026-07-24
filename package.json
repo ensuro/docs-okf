@@ -1,0 +1,16 @@
+{
+  "name": "ens-okf-docs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ensuro protocol documentation bundle (OKF v0.1)",
+  "scripts": {
+    "dev": "docmd dev",
+    "build": "docmd build"
+  },
+  "devDependencies": {
+    "@docmd/core": "^0.8.17"
+  },
+  "dependencies": {
+    "@docmd/plugin-math": "^0.8.17"
+  }
+}
