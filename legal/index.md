@@ -1,4 +1,4 @@
-# Documents
+# Legal & Compliance
 
 * [Trust & Security in Ensuro's Ecosystem](trust-and-security-in-ensuros-ecosystem.md) - At Ensuro, trust and security are foundational to everything we do.
 * [Disclosure Statements](disclosure-statements.md) - Disclosure statements about the Ensuro protocol, eTokens, and the risks of participating.

@@ -1,4 +1,4 @@
-# Concepts
+# Smart Contracts
 
 * [Architecture](architecture.md) - Ensuro smart contracts are coded in Solidity, and the codebase is open-source.
 * [Roles and permissions](roles.md) - The protocol uses OpenZeppelin's AccessControl mechanism.
@@ -10,6 +10,6 @@
 * [Reserves](reserves.md) - The funds received by the protocol, such as liquidity provider deposits or premiums, are stored in reserves.
 * [Asset Management](asset-management.md) - The Reserve contracts hold assets that can be invested to get additional returns.
 
-# Contracts
+# Contract References
 
 * [contracts](contracts/) - Reference documentation of each smart contract in the protocol.

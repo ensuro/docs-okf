@@ -1,4 +1,4 @@
-# Documents
+# IAssetManager
 
 * [IAssetManager](overview.md) - Asset managers are contracts that can be plugged into a reserve (eTokens or PremiumsAccounts).
 * [LiquidityThresholdAssetManager](liquiditythresholdassetmanager.md) - This is an abstract implementation of the IAssetManager interface that implements a liquidity strategy based on thresholds.

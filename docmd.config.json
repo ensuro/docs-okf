@@ -4,12 +4,17 @@
   "out": "site",
   "logo": {
     "light": "assets/images/ensuro-icon.png",
-    "dark": "assets/images/ensuro-icon.png",
+    "dark": "assets/images/ensuro-icon-dark.png",
     "href": "/",
     "alt": "Ensuro",
     "height": "32px"
   },
   "favicon": "assets/images/ensuro-icon.png",
+  "theme": {
+    "customCss": [
+      "/assets/css/theme.css"
+    ]
+  },
   "layout": {
     "sidebar": {
       "collapsible": true,

@@ -1,6 +1,6 @@
-Welcome to the Liquidity Providers section, a dedicated space where we provide comprehensive information to answer the most frequently asked questions from our Liquidity Providers and explain the onboarding process to our platform.
+# Liquidity Providers
 
-# Documents
+Welcome to the Liquidity Providers section, a dedicated space where we provide comprehensive information to answer the most frequently asked questions from our Liquidity Providers and explain the onboarding process to our platform.
 
 * [FAQ - Liquidity Providers](faq-liquidity-providers.md) - This section provides answers to frequently asked questions from Liquidity Providers.
 * [Ensuro's Pools – Overview](ensuros-pools-overview.md) - Ensuro offers two risk tranches to Liquidity Providers.

@@ -1,4 +1,4 @@
-# Contracts
+# Contract References
 
 * [PolicyPool](policypool.md) - The PolicyPool is the main contract that keeps track of active policies and receives the spending allowances.
 * [EToken](etoken.md) - This is an ERC20 compatible contract that represents the capital of each liquidity provider in a given pool.

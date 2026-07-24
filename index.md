@@ -8,6 +8,8 @@ tags:
   - protocol
 ---
 
+# Introduction
+
 Ensuro is a blockchain protocol that provides capital coverage for insurance risks.
 
 Insurance risks are composed of sets of policies purchased by customers (policyholders) to obtain a refund if they experience a loss. In the context of the Ensuro protocol, we define an insurance risk as a random variable between 0 and the maximum payout defined in the corresponding policy. From the point of view of the protocol, this payment is referred to as a _loss_.
