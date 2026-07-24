@@ -5,6 +5,7 @@ description: Conventions and maintenance notes for the Ensuro OKF documentation 
 tags:
 - meta
 timestamp: '2026-07-23T00:00:00Z'
+noindex: true
 ---
 
 # AGENTS.md

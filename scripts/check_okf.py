@@ -19,7 +19,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-RESERVED = ("index.md", "log.md")
+RESERVED = ("index.md", "log.md", "README.md")
 SKIP_DIRS = {".git", "scripts", "site", ".venv", "node_modules"}
 
 errors = []
@@ -80,10 +80,14 @@ def main():
         fm, body = frontmatter_of(path)
         if path.name in RESERVED:
             if fm is not None:
-                if path.name == "index.md" and rel.parent == Path(".") and set(fm or {}) <= {"okf_version"}:
-                    pass  # okf_version is permitted in the root index
-                else:
-                    errors.append(f"{rel}: reserved file must not have frontmatter (except okf_version in root index.md)")
+                allowed_keys = {"noindex"}
+                if path.name == "index.md" and rel.parent == Path("."):
+                    allowed_keys = {"okf_version", "title", "description", "type", "tags", "noindex"}
+                if path.name == "README.md":
+                    allowed_keys = {"title", "description", "type", "tags", "noindex"}
+                if not set(fm or {}) <= allowed_keys:
+                    disallowed = set(fm or {}) - allowed_keys
+                    errors.append(f"{rel}: reserved file frontmatter contains disallowed keys: {disallowed}")
             continue
         if fm is None:
             errors.append(f"{rel}: missing YAML frontmatter")

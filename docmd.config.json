@@ -1,7 +1,77 @@
 {
-  "title": "Ensuro Documentation",
+  "title": "Ensuro Docs",
   "src": ".",
   "out": "site",
+  "logo": {
+    "light": "assets/images/ensuro-icon.png",
+    "dark": "assets/images/ensuro-icon.png",
+    "href": "/",
+    "alt": "Ensuro",
+    "height": "32px"
+  },
+  "favicon": "assets/images/ensuro-icon.png",
+  "layout": {
+    "sidebar": {
+      "collapsible": true,
+      "defaultCollapsed": false
+    }
+  },
+  "navigation": [
+    { "title": "Introduction", "path": "/", "icon": "book-open" },
+    { "title": "Liquidity Providers", "path": "/liquidity-providers/", "icon": "wallet" },
+    { "title": "Risk Partners", "path": "/risk-partners/", "icon": "handshake" },
+    {
+      "title": "Protocol",
+      "icon": "shield",
+      "children": [
+        { "title": "Deployments", "path": "/deployments/" },
+        { "title": "Audits", "path": "/audits/" },
+        { "title": "General Questions", "path": "/protocol/" },
+        { "title": "Risk Management", "path": "/protocol/risk-management" },
+        {
+          "title": "Smart Contracts",
+          "path": "/smart-contracts/",
+          "children": [
+            { "title": "Architecture", "path": "/smart-contracts/architecture" },
+            { "title": "Roles & Permissions", "path": "/smart-contracts/roles" },
+            { "title": "Governance", "path": "/smart-contracts/governance" },
+            { "title": "Asset Management", "path": "/smart-contracts/asset-management" },
+            { "title": "Policy Lifecycle", "path": "/smart-contracts/policy-lifecycle" },
+            { "title": "Liquidity Pools", "path": "/smart-contracts/liquidity-pools" },
+            { "title": "Policies", "path": "/smart-contracts/policy" },
+            { "title": "Reserves", "path": "/smart-contracts/reserves" },
+            { "title": "Premiums Accounts", "path": "/smart-contracts/premiums-accounts" }
+          ]
+        },
+        {
+          "title": "Contract References",
+          "path": "/smart-contracts/contracts/",
+          "children": [
+            { "title": "PolicyPool", "path": "/smart-contracts/contracts/policypool" },
+            { "title": "EToken", "path": "/smart-contracts/contracts/etoken" },
+            { "title": "RiskModule", "path": "/smart-contracts/contracts/riskmodule" },
+            { "title": "PremiumsAccount", "path": "/smart-contracts/contracts/premiumsaccount" },
+            { "title": "AccessManager", "path": "/smart-contracts/contracts/accessmanager" },
+            { "title": "IAssetManager", "path": "/smart-contracts/contracts/iassetmanager/" },
+            { "title": "ILPWhitelist", "path": "/smart-contracts/contracts/ilpwhitelist/" },
+            { "title": "Extensions", "path": "/smart-contracts/contracts/extensions/" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "APIs",
+      "icon": "globe",
+      "children": [
+        { "title": "Overview", "path": "/offchain-apis/" },
+        { "title": "Offchain API", "path": "/offchain-apis/offchain-api" },
+        { "title": "Pricing API", "path": "/offchain-apis/pricing-api" },
+        { "title": "Callback Notifications", "path": "/offchain-apis/notification-webhooks" }
+      ]
+    },
+    { "title": "Frontend", "path": "/frontend/", "icon": "smartphone" },
+    { "title": "Legal & Compliance", "path": "/legal/", "icon": "file-text" }
+  ],
   "plugins": {
     "math": true
   }
