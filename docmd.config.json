@@ -23,16 +23,35 @@
   },
   "navigation": [
     { "title": "Introduction", "path": "/", "icon": "book-open" },
-    { "title": "Liquidity Providers", "path": "/liquidity-providers/", "icon": "wallet" },
-    { "title": "Risk Partners", "path": "/risk-partners/", "icon": "handshake" },
+    {
+      "title": "Liquidity Providers",
+      "path": "/liquidity-providers/",
+      "icon": "wallet",
+      "children": [
+        { "title": "Pools Overview", "path": "/liquidity-providers/ensuros-pools-overview" },
+        { "title": "Onboarding Process", "path": "/liquidity-providers/onboarding-process" },
+        { "title": "FAQ", "path": "/liquidity-providers/faq-liquidity-providers" }
+      ]
+    },
+    {
+      "title": "Risk Partners",
+      "path": "/risk-partners/",
+      "icon": "handshake",
+      "children": [
+        { "title": "Flow", "path": "/risk-partners/flow" },
+        { "title": "Onboarding Process", "path": "/risk-partners/onboarding-process" },
+        { "title": "FAQ", "path": "/risk-partners/faq-risk-partners" }
+      ]
+    },
     {
       "title": "Protocol",
+      "path": "/protocol/",
       "icon": "shield",
       "children": [
+        { "title": "FAQ", "path": "/protocol/faq" },
+        { "title": "Risk Management", "path": "/protocol/risk-management" },
         { "title": "Deployments", "path": "/deployments/" },
         { "title": "Audits", "path": "/audits/" },
-        { "title": "General Questions", "path": "/protocol/" },
-        { "title": "Risk Management", "path": "/protocol/risk-management" },
         {
           "title": "Smart Contracts",
           "path": "/smart-contracts/",
@@ -57,25 +76,76 @@
             { "title": "RiskModule", "path": "/smart-contracts/contracts/riskmodule" },
             { "title": "PremiumsAccount", "path": "/smart-contracts/contracts/premiumsaccount" },
             { "title": "AccessManager", "path": "/smart-contracts/contracts/accessmanager" },
-            { "title": "IAssetManager", "path": "/smart-contracts/contracts/iassetmanager/" },
-            { "title": "ILPWhitelist", "path": "/smart-contracts/contracts/ilpwhitelist/" },
-            { "title": "Extensions", "path": "/smart-contracts/contracts/extensions/" }
+            {
+              "title": "IAssetManager",
+              "path": "/smart-contracts/contracts/iassetmanager/",
+              "children": [
+                { "title": "Overview", "path": "/smart-contracts/contracts/iassetmanager/overview" },
+                { "title": "AAVEv3AssetManager", "path": "/smart-contracts/contracts/iassetmanager/aavev3assetmanager" },
+                { "title": "LiquidityThresholdAssetManager", "path": "/smart-contracts/contracts/iassetmanager/liquiditythresholdassetmanager" },
+                { "title": "ERC4626AssetManager", "path": "/smart-contracts/contracts/iassetmanager/erc4626assetmanager" }
+              ]
+            },
+            {
+              "title": "ILPWhitelist",
+              "path": "/smart-contracts/contracts/ilpwhitelist/",
+              "children": [
+                { "title": "Overview", "path": "/smart-contracts/contracts/ilpwhitelist/overview" },
+                { "title": "LPManualWhitelist", "path": "/smart-contracts/contracts/ilpwhitelist/lpmanualwhitelist" }
+              ]
+            },
+            {
+              "title": "Extensions",
+              "path": "/smart-contracts/contracts/extensions/",
+              "children": [
+                { "title": "ERC4626CashFlowLender", "path": "/smart-contracts/contracts/extensions/erc4626cashflowlender" },
+                { "title": "ETokensBundleVault", "path": "/smart-contracts/contracts/extensions/etokensbundlevault" },
+                { "title": "MultiStrategyERC4626", "path": "/smart-contracts/contracts/extensions/multistrategyerc4626" }
+              ]
+            }
           ]
         }
       ]
     },
     {
       "title": "APIs",
+      "path": "/offchain-apis/",
       "icon": "globe",
       "children": [
-        { "title": "Overview", "path": "/offchain-apis/" },
         { "title": "Offchain API", "path": "/offchain-apis/offchain-api" },
         { "title": "Pricing API", "path": "/offchain-apis/pricing-api" },
         { "title": "Callback Notifications", "path": "/offchain-apis/notification-webhooks" }
       ]
     },
-    { "title": "Frontend", "path": "/frontend/", "icon": "smartphone" },
-    { "title": "Legal & Compliance", "path": "/legal/", "icon": "file-text" }
+    {
+      "title": "Frontend",
+      "path": "/frontend/",
+      "icon": "smartphone",
+      "children": [
+        { "title": "Security and Monitoring", "path": "/frontend/security-and-monitoring" }
+      ]
+    },
+    {
+      "title": "Legal & Compliance",
+      "path": "/legal/",
+      "icon": "file-text",
+      "children": [
+        { "title": "Trust & Security in Ensuro's Ecosystem", "path": "/legal/trust-and-security-in-ensuros-ecosystem" },
+        { "title": "Disclosure Statements", "path": "/legal/disclosure-statements" },
+        { "title": "Ensuro Risk Disclosures", "path": "/legal/ensuro-risk-disclosures" },
+        { "title": "Fees & Charges", "path": "/legal/fees-and-charges" },
+        { "title": "Specific Responsibilities and Expectations of Retail Investors", "path": "/legal/specific-responsibilities-and-expectations-of-retail-investors" },
+        { "title": "Confirmation of Acceptance of Participation Agreement and Token Holder Terms & Conditions", "path": "/legal/confirmation-of-acceptance-of-participation-agreement-and-token-holder-terms-and-conditions" },
+        { "title": "Ensuro Terms of Service", "path": "/legal/ensuro-terms-of-service" },
+        { "title": "Restricted Jurisdictions", "path": "/legal/restricted-jurisdictions" },
+        { "title": "Participation Agreement for Token Holders", "path": "/legal/participation-agreement-for-token-holders" },
+        { "title": "Ensuro Anti-Money Laundering & Anti-Terrorism Financing Policy Statement", "path": "/legal/ensuro-anti-money-laundering-and-anti-terrorism-financing-policy-statement" },
+        { "title": "Privacy Policy", "path": "/legal/privacy-policy" },
+        { "title": "Ensuro Data Protection Policy", "path": "/legal/ensuro-data-protection-policy" },
+        { "title": "Cybersecurity Guide for Ensuro Protocol Investors", "path": "/legal/cybersecurity-guide-for-ensuro-protocol-investors" },
+        { "title": "Tax Guide for Ensuro Protocol Investors", "path": "/legal/tax-guide-for-ensuro-protocol-investors" }
+      ]
+    }
   ],
   "plugins": {
     "math": true
