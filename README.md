@@ -17,11 +17,10 @@ This repository is the [Open Knowledge Format (OKF) v0.1](https://github.com/Goo
 ├── assets/
 │   ├── images/               Diagrams and logos
 │   └── openapi/              OpenAPI specs
-├── protocol/                 General protocol FAQ and concepts
+├── ensuro-v3/                Protocol v3: concepts, FAQ, risk management, deployments, audits
+├── reference/                Smart contract reference
 ├── liquidity-providers/      LP documentation
 ├── risk-partners/            Risk partner documentation
-├── deployments/              Smart contract addresses
-├── smart-contracts/          Architecture and contract reference
 ├── offchain-apis/            REST API documentation
 ├── frontend/                 Frontend security and monitoring
 └── legal/                    Legal and compliance documents

@@ -1,4 +1,4 @@
-# Smart Contracts
+# Ensuro v3
 
 * [Architecture](architecture.md) - Ensuro smart contracts are coded in Solidity, and the codebase is open-source.
 * [Roles and permissions](roles.md) - The protocol uses OpenZeppelin's AccessControl mechanism.
@@ -9,7 +9,7 @@
 * [Premiums Accounts](premiums-accounts.md) - Every policy sold pays a premium; part of that premium is the pure premium.
 * [Reserves](reserves.md) - The funds received by the protocol, such as liquidity provider deposits or premiums, are stored in reserves.
 * [Asset Management](asset-management.md) - The Reserve contracts hold assets that can be invested to get additional returns.
-
-# Contract References
-
-* [contracts](contracts/) - Reference documentation of each smart contract in the protocol.
+* [Deployments](deployments/) - Here we list the addresses of our deployed smart contracts.
+* [Audits](audits.md) - Ensuro undergoes audits conducted by recognized industry firms.
+* [General Questions](faq.md) - Ensuro is a decentralized, licensed insurer on a public blockchain.
+* [Risk Management](risk-management.md) - Liquidity Providers and Policyholders are at the heart of Ensuro’s business model.

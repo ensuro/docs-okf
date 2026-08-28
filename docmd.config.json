@@ -44,71 +44,66 @@
       ]
     },
     {
-      "title": "Protocol",
-      "path": "/protocol/",
+      "title": "Ensuro v3",
+      "path": "/ensuro-v3/",
       "icon": "shield",
       "children": [
-        { "title": "FAQ", "path": "/protocol/faq" },
-        { "title": "Risk Management", "path": "/protocol/risk-management" },
-        { "title": "Deployments", "path": "/deployments/" },
-        { "title": "Audits", "path": "/audits/" },
+        { "title": "Architecture", "path": "/ensuro-v3/architecture" },
+        { "title": "Roles & Permissions", "path": "/ensuro-v3/roles" },
+        { "title": "Governance", "path": "/ensuro-v3/governance" },
+        { "title": "Asset Management", "path": "/ensuro-v3/asset-management" },
+        { "title": "Policy Lifecycle", "path": "/ensuro-v3/policy-lifecycle" },
+        { "title": "Liquidity Pools", "path": "/ensuro-v3/liquidity-pools" },
+        { "title": "Policies", "path": "/ensuro-v3/policy" },
+        { "title": "Reserves", "path": "/ensuro-v3/reserves" },
+        { "title": "Premiums Accounts", "path": "/ensuro-v3/premiums-accounts" },
+        { "title": "Deployments", "path": "/ensuro-v3/deployments/" },
+        { "title": "Audits", "path": "/ensuro-v3/audits/" },
+        { "title": "General Questions", "path": "/ensuro-v3/faq" },
+        { "title": "Risk Management", "path": "/ensuro-v3/risk-management" }
+      ]
+    },
+    {
+      "title": "Reference",
+      "path": "/reference/",
+      "icon": "book",
+      "children": [
+        { "title": "PolicyPool", "path": "/reference/policypool" },
+        { "title": "EToken", "path": "/reference/etoken" },
+        { "title": "RiskModule", "path": "/reference/riskmodule" },
+        { "title": "PremiumsAccount", "path": "/reference/premiumsaccount" },
+        { "title": "AccessManager", "path": "/reference/accessmanager" },
         {
-          "title": "Smart Contracts",
-          "path": "/smart-contracts/",
+          "title": "IAssetManager",
+          "path": "/reference/iassetmanager/",
           "children": [
-            { "title": "Architecture", "path": "/smart-contracts/architecture" },
-            { "title": "Roles & Permissions", "path": "/smart-contracts/roles" },
-            { "title": "Governance", "path": "/smart-contracts/governance" },
-            { "title": "Asset Management", "path": "/smart-contracts/asset-management" },
-            { "title": "Policy Lifecycle", "path": "/smart-contracts/policy-lifecycle" },
-            { "title": "Liquidity Pools", "path": "/smart-contracts/liquidity-pools" },
-            { "title": "Policies", "path": "/smart-contracts/policy" },
-            { "title": "Reserves", "path": "/smart-contracts/reserves" },
-            { "title": "Premiums Accounts", "path": "/smart-contracts/premiums-accounts" }
+            { "title": "Overview", "path": "/reference/iassetmanager/overview" },
+            { "title": "AAVEv3AssetManager", "path": "/reference/iassetmanager/aavev3assetmanager" },
+            { "title": "LiquidityThresholdAssetManager", "path": "/reference/iassetmanager/liquiditythresholdassetmanager" },
+            { "title": "ERC4626AssetManager", "path": "/reference/iassetmanager/erc4626assetmanager" }
           ]
         },
         {
-          "title": "Contract References",
-          "path": "/smart-contracts/contracts/",
+          "title": "ILPWhitelist",
+          "path": "/reference/ilpwhitelist/",
           "children": [
-            { "title": "PolicyPool", "path": "/smart-contracts/contracts/policypool" },
-            { "title": "EToken", "path": "/smart-contracts/contracts/etoken" },
-            { "title": "RiskModule", "path": "/smart-contracts/contracts/riskmodule" },
-            { "title": "PremiumsAccount", "path": "/smart-contracts/contracts/premiumsaccount" },
-            { "title": "AccessManager", "path": "/smart-contracts/contracts/accessmanager" },
-            {
-              "title": "IAssetManager",
-              "path": "/smart-contracts/contracts/iassetmanager/",
-              "children": [
-                { "title": "Overview", "path": "/smart-contracts/contracts/iassetmanager/overview" },
-                { "title": "AAVEv3AssetManager", "path": "/smart-contracts/contracts/iassetmanager/aavev3assetmanager" },
-                { "title": "LiquidityThresholdAssetManager", "path": "/smart-contracts/contracts/iassetmanager/liquiditythresholdassetmanager" },
-                { "title": "ERC4626AssetManager", "path": "/smart-contracts/contracts/iassetmanager/erc4626assetmanager" }
-              ]
-            },
-            {
-              "title": "ILPWhitelist",
-              "path": "/smart-contracts/contracts/ilpwhitelist/",
-              "children": [
-                { "title": "Overview", "path": "/smart-contracts/contracts/ilpwhitelist/overview" },
-                { "title": "LPManualWhitelist", "path": "/smart-contracts/contracts/ilpwhitelist/lpmanualwhitelist" }
-              ]
-            },
-            {
-              "title": "Extensions",
-              "path": "/smart-contracts/contracts/extensions/",
-              "children": [
-                { "title": "ERC4626CashFlowLender", "path": "/smart-contracts/contracts/extensions/erc4626cashflowlender" },
-                { "title": "ETokensBundleVault", "path": "/smart-contracts/contracts/extensions/etokensbundlevault" },
-                { "title": "MultiStrategyERC4626", "path": "/smart-contracts/contracts/extensions/multistrategyerc4626" }
-              ]
-            }
+            { "title": "Overview", "path": "/reference/ilpwhitelist/overview" },
+            { "title": "LPManualWhitelist", "path": "/reference/ilpwhitelist/lpmanualwhitelist" }
+          ]
+        },
+        {
+          "title": "Extensions",
+          "path": "/reference/extensions/",
+          "children": [
+            { "title": "ERC4626CashFlowLender", "path": "/reference/extensions/erc4626cashflowlender" },
+            { "title": "ETokensBundleVault", "path": "/reference/extensions/etokensbundlevault" },
+            { "title": "MultiStrategyERC4626", "path": "/reference/extensions/multistrategyerc4626" }
           ]
         }
       ]
     },
     {
-      "title": "APIs",
+      "title": "Offchain APIs",
       "path": "/offchain-apis/",
       "icon": "globe",
       "children": [

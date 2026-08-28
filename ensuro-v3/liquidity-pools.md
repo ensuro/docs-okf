@@ -99,7 +99,7 @@ This operation decreases the total supply without affecting the scr, thus increa
 
 ### Lock
 
-When a policy is sold and requires solvency covered by the pool, the eToken receives lock requests from other protocol components ([PremiumsAccount](contracts/premiumsaccount.md)). These lock requests specify the amount to lock and the interest rate that LPs will receive.
+When a policy is sold and requires solvency covered by the pool, the eToken receives lock requests from other protocol components ([PremiumsAccount](../reference/premiumsaccount.md)). These lock requests specify the amount to lock and the interest rate that LPs will receive.
 
 This operation increases the scr, modifies the [scr interest rate and token interest rate](liquidity-pools.md#scr-token-interest-rate), and increases the utilization rate.
 
@@ -107,7 +107,7 @@ The parameter _maxUtilizationRate_ allows defining a limit on the utilization ra
 
 ### Unlock
 
-When policies expire or are resolved (with or without payout), the eToken receives an unlock request from other protocol components ([PremiumsAccount](contracts/premiumsaccount.md)). These requests specify the amount to unlock and the paid interest rate.
+When policies expire or are resolved (with or without payout), the eToken receives an unlock request from other protocol components ([PremiumsAccount](../reference/premiumsaccount.md)). These requests specify the amount to unlock and the paid interest rate.
 
 This operation decreases the scr, modifies the [scr interest rate and token interest rate](liquidity-pools.md#scr-token-interest-rate), and decreases the utilization rate.
 

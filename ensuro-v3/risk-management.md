@@ -22,4 +22,4 @@ Ensuro leverages its architecture to protect LPs capital whilst offering solvenc
 
 Before disbursing the LPs’ capital locked in the SCR pool, both the Won Premium pool and the Active Premium pool must be fully depleted. As mentioned, policies are priced incorporating a conservative factor called '_margin of conservatism_' or MoC. This parameter increases the pure premium having the effect of increasing both the Won and Active Premium pool, shielding the SCR pool. The MoC is monitored in real-time, and can be increased as deemed necessary.
 
-Further details on the order in which solvency reserves are used can be found [here](../smart-contracts/premiums-accounts.md#pure-premiums).
+Further details on the order in which solvency reserves are used can be found [here](premiums-accounts.md#pure-premiums).

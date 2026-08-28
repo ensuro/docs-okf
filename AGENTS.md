@@ -47,5 +47,5 @@ and asset references.
 ## Known gaps
 
 See `log.md` for the migration entry: the pricing API spec (`assets/openapi/pricing-api.yaml`) is
-missing the `cancel-policy` operation, and `smart-contracts/contracts/riskmodule.md` is a
+missing the `cancel-policy` operation, and `reference/riskmodule.md` is a
 placeholder pending the new protocol version docs.

@@ -27,7 +27,7 @@ The specific roles and functions of the contract are as follows:
 
 ## Interactions
 
-![](../../assets/images/premiumsaccount-interactions.png)
+![](../assets/images/premiumsaccount-interactions.png)
 
 ## Parameters
 

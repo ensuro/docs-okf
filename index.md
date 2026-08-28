@@ -44,9 +44,8 @@ Besides the logic related to policy pricing and resolution, each risk module sto
 
 - [Liquidity Providers](liquidity-providers/) — FAQ, pools overview and onboarding process
 - [Risk Partners](risk-partners/) — FAQ, onboarding process and product flow
-- [Deployments](deployments/) — Addresses of deployed smart contracts
-- [Audits](audits/) — Security audit reports
-- [Smart Contracts](smart-contracts/) — Architecture, concepts and reference docs
+- [Ensuro v3](ensuro-v3/) — Architecture, protocol concepts, governance, deployments, audits and FAQ
+- [Reference](reference/) — Reference documentation of each smart contract
 - [Offchain APIs](offchain-apis/) — REST APIs for partner integrations
 - [Frontend](frontend/) — Security and monitoring
 - [Legal & Compliance](legal/) — Legal and compliance documents
