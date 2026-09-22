@@ -28,19 +28,19 @@ The roles and functions of the contract are as follows:
 
 ## Interactions
 
-![](../../assets/images/policypool-interactions.png)
+![](../assets/images/policypool-interactions.png)
 
 ## Parameters
 
 | Field    | Type    | Description                                                                                                                                      |
 | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| treasury | address | This is the address of the Ensuro Treasury, that receives the protocol fees (see [#ensuro-commission](../policy.md#ensuro-commission "mention")) |
+| treasury | address | This is the address of the Ensuro Treasury, that receives the protocol fees (see [#ensuro-commission](../ensuro-v3/policy.md#ensuro-commission "mention")) |
 
 ## Policy database
 
 One of the responsibilities of the PolicyPool contract is to keep track of active policies with all the (immutable) data.
 
-Given the [Policy](../policy.md) struct has many fields and storage is expensive on-chain, the struct isn't stored as a storage variable of the contracts.
+Given the [Policy](../ensuro-v3/policy.md) struct has many fields and storage is expensive on-chain, the struct isn't stored as a storage variable of the contracts.
 
 Instead, when the policy is created, only a hash of the struct is stored and an event with all the fields is emitted. Then, for any operation with the Policy (like resolution or expiration), all the policy needs to be sent as a parameter. The PolicyPool contract computes the hash of the parameter and compares it with the stored one.
 
@@ -59,7 +59,7 @@ Event emitted every time a new policy is added to the pool. Contains all the dat
 | Name       | Type                     | Description                                                                                 |
 | ---------- | ------------------------ | ------------------------------------------------------------------------------------------- |
 | riskModule | contract IRiskModule     | The risk module that created the policy                                                     |
-| policy     | struct Policy.PolicyData | The [{Policy-PolicyData}](../policy.md) struct with all the immutable fields of the policy. |
+| policy     | struct Policy.PolicyData | The [{Policy-PolicyData}](../ensuro-v3/policy.md) struct with all the immutable fields of the policy. |
 
 ### PolicyResolved
 

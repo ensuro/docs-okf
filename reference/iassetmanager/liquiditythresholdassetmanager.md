@@ -14,7 +14,7 @@ This is an abstract implementation of the [IAssetManager](overview.md) interface
 
 This strategy manages how much of the funds should remain liquid in the reserve (`currency().balanceOf(reserve)`) and how much is invested. For that, it has three liquidity thresholds: minimum, middle, and maximum. On the rebalance operations, if the liquid funds of the reserve are above the maximum, it invests funds, leaving liquidity at the middle level. If the liquid funds are below the minimum, it deinvests enough funds to leave the liquidity again at the middle level.
 
-![](../../../assets/images/liquidity-threshold-asset-manager.png)
+![](../../assets/images/liquidity-threshold-asset-manager.png)
 
 ## Inheriting
 

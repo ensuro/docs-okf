@@ -11,7 +11,7 @@ timestamp: '2025-04-16T15:35:04+00:00'
 
 # EToken
 
-This is an ERC20 compatible contract that represents the capital of each liquidity provider in a given pool. The valuation is one-to-one with the underlying stablecoin. The view `scr()` returns the amount of capital that's locked backing up policies. For this capital locked, the pool receives an interest (scrInterestRate() / tokenInterestRate()) that is continuously accrued in the balance of eToken holders. [See more](../liquidity-pools.md).
+This is an ERC20 compatible contract that represents the capital of each liquidity provider in a given pool. The valuation is one-to-one with the underlying stablecoin. The view `scr()` returns the amount of capital that's locked backing up policies. For this capital locked, the pool receives an interest (scrInterestRate() / tokenInterestRate()) that is continuously accrued in the balance of eToken holders. [See more](../ensuro-v3/liquidity-pools.md).
 
 ## **Roles**
 
@@ -28,16 +28,16 @@ The specific roles and functions of the contract are as follows:
 
 ## Interactions
 
-![](../../assets/images/etoken-interactions.png)
+![](../assets/images/etoken-interactions.png)
 
 ## Parameters
 
 | Field                    | Type                    | Description                                                                                                                  |
 | ------------------------ | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| liquidityRequirement     | uint256 (wad)           | Usually 1.0, used on [withdrawal](../liquidity-pools.md#withdrawal) to scale the scr locked.                                 |
-| minUtilizationRatio      | uint256 (wad)           | Used to prevent [deposits](../liquidity-pools.md#deposit) to overdilute the returns.                                         |
-| maxUtilizationRatio      | uint256 (wad)           | Prevents taking [locking scr](../liquidity-pools.md#lock) (taking new policies) if utilization ratio exceeds this parameter. |
-| internalLoanInterestRate | uint256 (wad)           | Interest rate charged for [internal loans](../liquidity-pools.md#internal-loan).                                             |
+| liquidityRequirement     | uint256 (wad)           | Usually 1.0, used on [withdrawal](../ensuro-v3/liquidity-pools.md#withdrawal) to scale the scr locked.                                 |
+| minUtilizationRatio      | uint256 (wad)           | Used to prevent [deposits](../ensuro-v3/liquidity-pools.md#deposit) to overdilute the returns.                                         |
+| maxUtilizationRatio      | uint256 (wad)           | Prevents taking [locking scr](../ensuro-v3/liquidity-pools.md#lock) (taking new policies) if utilization ratio exceeds this parameter. |
+| internalLoanInterestRate | uint256 (wad)           | Interest rate charged for [internal loans](../ensuro-v3/liquidity-pools.md#internal-loan).                                             |
 | whitelist                | address (ILPWhitelist)  | Optional contract that, if present, controls who can deposit funds in the eToken. See [ILPWhitelist](ilpwhitelist/overview.md).         |
 | assetManager             | address (IAssetManager) | Optional contract that, if present, implements the asset management strategy. See [IAssetManager](iassetmanager/overview.md).           |
 
