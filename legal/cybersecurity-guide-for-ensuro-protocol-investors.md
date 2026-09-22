@@ -1,19 +1,19 @@
 ---
 type: Guide
 title: Cybersecurity Guide for Ensuro Protocol Investors
-description: The Ensuro Protocol operates as a decentralized insurance platform on the Polygon blockchain, allowing investors to provide liquidity through eTokens.
+description: The Ensuro Protocol operates as a decentralized insurance platform on the Ethereum blockchain, allowing investors to provide liquidity through eTokens.
 tags:
 - legal
 - investors
 - security
-timestamp: '2026-01-27T18:31:51+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Cybersecurity Guide for Ensuro Protocol Investors
 
 ### Introduction
 
-The Ensuro Protocol operates as a decentralized insurance platform on the Polygon blockchain, allowing investors to provide liquidity through eTokens. This creates opportunities for returns, but it could also present security challenges that differ from traditional investments.
+The Ensuro Protocol operates as a decentralized insurance platform on the Ethereum blockchain, allowing investors to provide liquidity through eTokens. This creates opportunities for returns, but it could also present security challenges that differ from traditional investments.
 
 This guide has been developed to ensure all Ensuro Protocol investors understand the cybersecurity landscape and can implement appropriate protective measures. The information is relevant for investors from all countries except the United States and nations under international sanctions, since they cannot participate in the Ensuro Protocol.
 
@@ -21,7 +21,7 @@ This guide has been developed to ensure all Ensuro Protocol investors understand
 
 #### The Blockchain Security Model 
 
-The Polygon blockchain, which hosts the Ensuro Protocol, utilizes distributed ledger technology to provide security through decentralization. The blockchain itself is highly secure, however, most vulnerabilities exist at the access points where users interact with the system.
+The Ethereum blockchain, which hosts the Ensuro Protocol, utilizes distributed ledger technology to provide security through decentralization. The blockchain itself is highly secure, however, most vulnerabilities exist at the access points where users interact with the system.
 
 Key security aspects include:
 
@@ -46,8 +46,8 @@ Recommended wallet options:
 
 Hardware wallets:(examples)
 
-* Ledger Nano X/S Plus: Supports Polygon network through the Ledger Live application, offers excellent security features through a secure element chip that protects your private keys
-* Trezor Model T/One: Comprehensive support for multiple chains including Polygon, featuring an open-source approach to security
+* Ledger Nano X/S Plus: Supports the Ethereum network through the Ledger Live application, offers excellent security features through a secure element chip that protects your private keys
+* Trezor Model T/One: Comprehensive support for multiple chains including Ethereum, featuring an open-source approach to security
 * KeepKey: Larger display for easier address verification, integrates with ShapeShift platform
 * BitBox02: Minimalist design with emphasis on simplicity and security, includes backup options
 
@@ -57,7 +57,7 @@ Considerations: Requires physical security, proper backup procedures, firmware u
 
 2. Software wallets (examples)
 
-* MetaMask: Browser extension and mobile app with Polygon network support via custom RPC configuration
+* MetaMask: Browser extension and mobile app with built-in Ethereum network support
 * Trust Wallet: Mobile solution with extensive compatibility and built-in dApp browser
 * Coinbase Wallet: User-friendly option with good security features and direct integration with Coinbase exchange
 * Alpha Wallet: Open-source mobile wallet with focus on DeFi applications
@@ -170,7 +170,7 @@ Common phishing scenario: Be wary of messages claiming to be from Ensuro support
 
 #### Smart Contract Security Awareness
 
-The Ensuro Protocol operates through smart contracts on the Polygon network. Understanding their security model helps investors make safer decisions.
+The Ensuro Protocol operates through smart contracts on the Ethereum network. Understanding their security model helps investors make safer decisions.
 
 Smart contract security factors:
 
@@ -179,10 +179,10 @@ Smart contract security factors:
 * Audit reports are published at https://docs.ensuro.co/ensuro-docs/audits
 * Review dates of audits and severity of any identified issues
 
-1. Contract verification: Only interact with verified contracts on the Polygon blockchain
+1. Contract verification: Only interact with verified contracts on the Ethereum blockchain
 
 * Verify contract addresses through the official Ensuro documentation
-* Check contract verification status on PolygonScan (look for the green checkmark)
+* Check contract verification status on Etherscan (look for the green checkmark)
 
 1. Permission awareness: Understand what permissions you grant when approving contracts<br>
    Use approval tools like Revoke.cash to manage contract permissions
@@ -205,11 +205,11 @@ When transacting with eTokens, follow these verification procedures to prevent e
 * Send a test transaction with a minimal amount before large transfers
 * Use the address book feature in your wallet for frequently used addresses
 
-1. Gas fee management on Polygon:
+1. Gas fee management on Ethereum:
 
-* Typical transaction costs: $0.01-0.05 (significantly lower than Ethereum)
-* Keep sufficient MATIC tokens for gas fees (approximately 1-5 MATIC is sufficient for numerous transactions)
-* Check current gas prices at https://polygonscan.com/gastracker
+* Transaction costs vary with network congestion; check current gas prices before transacting
+* Keep sufficient ETH for gas fees
+* Check current gas prices at https://etherscan.io/gastracker
 * Consider transaction priority needs when setting gas prices
 
 1. Transaction signing safety:
@@ -279,31 +279,30 @@ Update protocol:
 
 ### Security Implications of Network Interactions
 
-Understanding how the Polygon network interfaces with the Ensuro Protocol can help you identify and mitigate potential vulnerabilities:
+Understanding how the Ethereum network interfaces with the Ensuro Protocol can help you identify and mitigate potential vulnerabilities:
 
 1. Remote Procedure Call (RPC) endpoint security:
 
-* Use trusted RPC endpoints when configuring your wallet for Polygon
+* Use trusted RPC endpoints when configuring your wallet for Ethereum
 * Be aware that malicious RPC endpoints can monitor transactions or inject fraudulent requests
 * Consider running your own RPC node for maximum security if you have technical expertise
 
-1. Gas fee considerations specific to Polygon:<br>
-   Polygon's gas fees are significantly lower than Ethereum's, but this can create security considerations
+1. Gas fee considerations:<br>
+   Ethereum gas fees vary significantly with network congestion, which can create security considerations
 
 * Attackers may attempt multiple small transactions that might go unnoticed due to minimal cost
 * Monitor even small transactions and set up alerts for any unauthorized wallet activity
 
 1. Bridge security when transferring assets:
 
-* When moving assets between Ethereum and Polygon, use only official bridges
+* When moving assets between Ethereum and other blockchains, use only official bridges
 * Understand that cross-chain transfers introduce additional security variables
 * Consider using reputable centralized exchanges as an alternative bridging method for large transfers
 
-1. Layer-2 specific vulnerabilities:
+1. Network confirmation and finality:
 
-* Polygon validators have different security models than Ethereum mainnet
-* Understand that finality times and confirmation requirements differ from other networks
-* Consider waiting for multiple confirmations for high-value transactions on Polygon
+* Understand that confirmation times and finality requirements differ across networks
+* Consider waiting for multiple confirmations for high-value transactions
 
 #### Customized Security Based on Investment Size
 
@@ -480,7 +479,7 @@ The cryptocurrency security environment continues to evolve rapidly. These are t
 
 1. Cross-chain bridge vulnerabilities:
 
-* Attacks targeting interactions between Polygon and other blockchains
+* Attacks targeting interactions between Ethereum and other blockchains
 * Smart contract exploits in bridge protocols
 * Defense: Use trusted bridges only, verify contract addresses, consider direct fiat on/off ramps when possible
 
@@ -502,7 +501,7 @@ Developing security awareness is your strongest defense against emerging threats
 1. Stay informed through reputable sources:
 
 * Ensuro Blog (blog.ensuro.co)
-* Polygon security announcements
+* Ethereum security announcements
 * Cryptocurrency security newsletters
 
 1. Participate in security discussions:
@@ -519,20 +518,20 @@ Developing security awareness is your strongest defense against emerging threats
 
 ### Appendix B: Technical Security Implementation Guide
 
-#### Configuring MetaMask for Secure Polygon Network Interaction
+#### Configuring MetaMask for Secure Ethereum Network Interaction
 
-For Ensuro Protocol investors using MetaMask, proper configuration enhances security when interacting with the Polygon network:
+For Ensuro Protocol investors using MetaMask, proper configuration enhances security when interacting with the Ethereum network:
 
-Secure Polygon network configuration:
-Network Name: Polygon Mainnet
+Secure Ethereum network configuration:
+Network Name: Ethereum Mainnet
 
-RPC URL: [https://polygon-rpc.com/](https://polygon-rpc.com/)
+RPC URL: Built into MetaMask by default (use a trusted provider for custom configurations)
 
-Chain ID: 137
+Chain ID: 1
 
-Currency Symbol: MATIC
+Currency Symbol: ETH
 
-Block Explorer URL: [https://polygonscan.com/](https://polygonscan.com/)
+Block Explorer URL: [https://etherscan.io/](https://etherscan.io/)
 
 1. Recommended security settings:
 
@@ -555,7 +554,7 @@ For enhanced security of significant holdings, consider implementing a multisign
 1. Gnosis Safe setup process:
 
 * Access the official Gnosis Safe interface at https://gnosis-safe.io/
-* Select the Polygon network
+* Select the Ethereum network
 * Connect your primary wallet
 * Set required confirmation threshold (e.g., 2 of 3 signers)
 * Add owner addresses (at least one should be a hardware wallet)
@@ -657,13 +656,12 @@ The Ensuro team is committed to maintaining the highest security standards, but 
 #### Security Tools
 
 * Revoke.cash: [https://revoke.cash](https://revoke.cash)
-* PolygonScan: [https://polygonscan.com](https://polygonscan.com)
-* Blockchain Explorer: [https://explorer.matic.network](https://explorer.matic.network)
+* Etherscan: [https://etherscan.io](https://etherscan.io)
 
 #### Educational Resources
 
 * Ensuro Blog: [blog.ensuro.co](http://blog.ensuro.co)
-* Polygon Documentation: [https://docs.polygon.technology/docs/](https://docs.polygon.technology/docs/)
+* Ethereum Documentation: [https://ethereum.org/en/developers/docs/](https://ethereum.org/en/developers/docs/)
 
 #### Ensuro Support
 

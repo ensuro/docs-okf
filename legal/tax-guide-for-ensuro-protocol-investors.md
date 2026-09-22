@@ -6,14 +6,14 @@ tags:
 - legal
 - investors
 - tax
-timestamp: '2026-01-27T18:31:51+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Tax Guide for Ensuro Protocol Investors
 
 ### Introduction
 
-This guide provides essential tax information for investors holding eTokens in the Ensuro Protocol. As a decentralized insurance platform operating on the Polygon blockchain, Ensuro enables participation in insurance underwriting through liquidity provision via eTokens.
+This guide provides essential tax information for investors holding eTokens in the Ensuro Protocol. As a decentralized insurance platform operating on the Ethereum blockchain, Ensuro enables participation in insurance underwriting through liquidity provision via eTokens.
 
 Ensuro is domiciled in Bermuda with its favorable tax environment, however, investors' tax obligations are determined by their country of residence. This guide aims to clarify potential tax implications of investment activities, enabling informed decision-making and regulatory compliance.
 
@@ -293,7 +293,7 @@ Since eTokens are denominated in USDC but must be reported in local currency for
 
 Tax authorities increasingly request verification of blockchain transactions. Recommended documentation includes:
 
-* Transaction hashes from the Polygon blockchain
+* Transaction hashes from the Ethereum blockchain
 * Wallet addresses (while maintaining appropriate privacy considerations)
 * Smart contract interaction records
 
@@ -462,7 +462,7 @@ Other Important Resources
 * Ensuro Blog: [https://ensuro.co/blog](https://ensuro.co/blog)
 * OECD Crypto-Asset Reporting Framework (CARF): [https://www.oecd.org/tax/exchange-of-tax-information/crypto-asset-reporting-framework-and-amendments-to-the-common-reporting-standard.htm](https://www.oecd.org/tax/exchange-of-tax-information/crypto-asset-reporting-framework-and-amendments-to-the-common-reporting-standard.htm)
 * EU Markets in Crypto-Assets (MiCA) Regulation: [https://finance.ec.europa.eu/regulation-and-supervision/regulatory-process-financial-services/regulatory-framework-financial-markets/markets-crypto-assets-mica\_en](https://finance.ec.europa.eu/regulation-and-supervision/regulatory-process-financial-services/regulatory-framework-financial-markets/markets-crypto-assets-mica_en)
-* PolygonScan: [https://polygonscan.com](https://polygonscan.com)
+* Etherscan: [https://etherscan.io](https://etherscan.io)
 * Koinly Tax Guide: [https://koinly.io/guides/](https://koinly.io/guides/)
 * TokenTax: [https://tokentax.co](https://tokentax.co)
 * Accointing: [https://www.accointing.com](https://www.accointing.com)

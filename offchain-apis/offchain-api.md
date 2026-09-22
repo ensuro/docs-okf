@@ -5,8 +5,8 @@ description: REST API to query information about policies and other components o
 tags:
 - api
 - reference
-timestamp: '2024-05-22T16:18:34+00:00'
-resource: https://offchain-v2.ensuro.co/api/
+timestamp: '2026-09-22T00:00:00+00:00'
+resource: https://offchain-v3.ensuro.co/api/
 spec: assets/openapi/offchain-api.yaml
 ---
 
@@ -14,8 +14,8 @@ spec: assets/openapi/offchain-api.yaml
 
 You can navigate our offchain API at these URLs:
 
-* Polygon Mainnet: [https://offchain-v2.ensuro.co/api/](https://offchain-v2.ensuro.co/api/)
-* Sepolia Testnet: [https://offchain-sepolia.ensuro.co/api/](https://offchain-sepolia.ensuro.co/api/)
+* Ethereum Mainnet: [https://offchain-v3.ensuro.co/api/](https://offchain-v3.ensuro.co/api/)
+* Sepolia Testnet: [https://offchain-sepolia-v3.ensuro.co/api/](https://offchain-sepolia-v3.ensuro.co/api/)
 
 The full machine-readable specification is bundled with this bundle at
 [assets/openapi/offchain-api.yaml](../assets/openapi/offchain-api.yaml) (OpenAPI/Swagger 2.0).

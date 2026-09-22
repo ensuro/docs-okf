@@ -5,7 +5,7 @@ description: Disclosure statements about the Ensuro protocol, eTokens, and the r
 tags:
 - legal
 - disclosures
-timestamp: '2026-01-27T18:31:51+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Disclosure Statements
@@ -31,7 +31,7 @@ Disclosure Statements
 
 #### 2. Our Platform
 
-2.1. Ensuro operates a smart-contract-based platform on the Polygon blockchain, enabling the issuance of reinsurance and protection policies backed by digital asset capital. These insurance-linked contracts are priced, collateralized, and managed entirely on-chain.
+2.1. Ensuro operates a smart-contract-based platform on the Ethereum blockchain, enabling the issuance of reinsurance and protection policies backed by digital asset capital. These insurance-linked contracts are priced, collateralized, and managed entirely on-chain.
 
 2.2. All underwriting activities are carried out through individual Segregated Accounts (each a “Cell”) within our Segregated Accounts Company (SAC) structure. These Cells are capitalized by investors—referred to as Liquidity Providers or Capital Providers—who deposit funds via stablecoins such as USDC.
 
@@ -276,7 +276,7 @@ Agreement<br>
 Means any agreement(s) entered into or proposed to be entered into between you and Ensuro for your access to and/or use of the Platform, and/or services provided in connection with a Segregated Account (Cell).
 
 Blockchain<br>
-Refers to distributed ledger technology that enables peer-to-peer electronic Transactions and records and shares such Transactions among users. The Ensuro Platform operates on public Blockchains, including but not limited to Polygon, using Smart Contract infrastructure.
+Refers to distributed ledger technology that enables peer-to-peer electronic Transactions and records and shares such Transactions among users. The Ensuro Platform operates on public Blockchains, including but not limited to Ethereum, using Smart Contract infrastructure.
 
 BMA<br>
 Means the Bermuda Monetary Authority, the regulatory authority for insurance and digital asset business in Bermuda.

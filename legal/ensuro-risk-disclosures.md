@@ -5,7 +5,7 @@ description: By accessing or using Ensuro’s services—including our website (
 tags:
 - legal
 - disclosures
-timestamp: '2026-01-27T18:31:51+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Ensuro Risk Disclosures
@@ -14,7 +14,7 @@ By accessing or using Ensuro’s services—including our website (ensuro.co), w
 
 **1. Cryptographic and Blockchain Network Risks**
 
-Ensuro operates primarily on the Polygon blockchain, using smart contracts to underwrite insurance risks and manage capital. These systems are subject to:
+Ensuro operates on the Ethereum blockchain, using smart contracts to underwrite insurance risks and manage capital. These systems are subject to:
 
 * Ongoing technical evolution, including risks from quantum computing and cryptographic vulnerabilities.
 * Potential software bugs or unexpected outcomes, despite external audits and adherence to rigorous security standards.
