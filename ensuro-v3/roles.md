@@ -46,10 +46,10 @@ These roles are used by Ensuro's team and automated processes to perform routine
 | MSV_REBALANCER_ROLE | DEPLOYER_V3, TREASURY_PETTY_CASH, ADMINS_V3 | Rebalances the multi-strategy vault (`rebalance`). |
 | WHITELISTER_ROLE | DEPLOYER_V3, RELAYER_BRIDGE, TREASURY_PETTY_CASH | Adds addresses to the LP whitelist (`whitelistAddress`). |
 | RECORD_EARNINGS_ROLE | TREASURY_PETTY_CASH, MIMIC_SMART_ACCOUNT | Records the earnings of the reserves (`recordEarnings`). |
-| REPAY_LOANS_ROLE | RELAYER_BRIDGE | Repays the loans taken by the premiums accounts (`repayLoans`). |
+| REPAY_LOANS_ROLE | RELAYER_BRIDGE | Triggers loan repayment taken by the premiums accounts (`repayLoans`). |
 | CFL_TREASURY_REPAY_ROLE | TREASURY_PETTY_CASH, TREASURY_V3 | Repays the cash-flow lender's debt (`repayDebt`). |
 | CFL_TREASURY_ROLE | ADMINS_V3, TREASURY_V3 | Cashes out payouts from the cash-flow lender (`cashOutPayouts`). |
-| PA_GRANTOR_ROLE | TREASURY_V3, TREASURY_PETTY_CASH | Sends grants to the premiums accounts (`receiveGrant`). |
-| OFFCHAIN_ROLE | OFFCHAIN_EOA, CFL_GATEWAY_ACCOUNT_EP | Batches calls to the PolicyPool (`multicall`). |
+| PA_GRANTOR_ROLE | TREASURY_V3, TREASURY_PETTY_CASH | Sends grants to the premiums accounts (`receiveGrant`). Used for adjustments or other special cases. |
+| OFFCHAIN_ROLE | OFFCHAIN_EOA, CFL_GATEWAY_ACCOUNT_EP | Batches calls to the PolicyPool (`multicall`). Used for expiring multiple policies at once. |
 
 The accounts referenced here (`ADMINS_V3`, `LOW_RISK_V3`, `TREASURY_V3`, etc.) are described in the [Governance](governance.md) page.

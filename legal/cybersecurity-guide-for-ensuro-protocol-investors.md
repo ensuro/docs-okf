@@ -553,7 +553,7 @@ For enhanced security of significant holdings, consider implementing a multisign
 
 1. Gnosis Safe setup process:
 
-* Access the official Gnosis Safe interface at https://gnosis-safe.io/
+* Access the official Gnosis Safe interface at https://app.safe.global/
 * Select the Ethereum network
 * Connect your primary wallet
 * Set required confirmation threshold (e.g., 2 of 3 signers)
