@@ -4,7 +4,7 @@ title: Flow
 description: This page provides an in-depth overview of the various stages and processes involved in Ensuro's programs.
 tags:
 - risk-partners
-timestamp: '2026-07-20T21:03:37+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Flow
@@ -17,16 +17,16 @@ timestamp: '2026-07-20T21:03:37+00:00'
 
 * Prior to program initiation, it is necessary for the Risk Partner to establish an account on the [Circle platform](https://www.circle.com/en/). Circle, the issuer of the USDC stablecoin, facilitates the conversion of USD to USDC. This process typically takes approximately three weeks to complete and entails fulfilling the KYB (Know-Your-Business) requirements akin to those of a traditional bank.
 
-## 3. Retention of fees by the Risk Partner and transfer of Minimum Premium (in USDC) on the Polygon blockchain
+## 3. Retention of fees by the Risk Partner and transfer of Minimum Premium (in USDC)
 
-* While user premiums are received in the currency chosen by the Risk Partner, Ensuro's commissions are payable in [USDC](https://www.circle.com/en/usdc). To accommodate the time required for stablecoin conversion, it is recommended that the Risk Partner initially deposit a specified amount of USDC into a wallet created on the [Polygon blockchain](https://polygon.technology/). The Ensuro team is available to provide assistance throughout this process.
+* While user premiums are received in the currency chosen by the Risk Partner, Ensuro's commissions are payable in [USDC](https://www.circle.com/en/usdc). To accommodate the time required for stablecoin conversion, it is recommended that the Risk Partner initially deposit a specified amount of USDC into a wallet created on the blockchain where Ensuro is deployed. The Ensuro team is available to provide assistance throughout this process.
 
 Upon the sale of a policy, the following actions are taken by the Risk Partner:
 
 * Upfront retention of commissions by the Risk Partner.
 * Transfer of the following items to Ensuro:
 * Policy details, including start date, expiration date, payout amount in USDC, and the probability of loss for the specific policy. These parameters enable Ensuro's system to calculate the Minimum Premium.
-* Minimum Premium amount in USDC. To facilitate this, the Risk Partner must possess a wallet on the Polygon blockchain containing USDC. Opening a [Circle account](https://www.circle.com/en/circle-account), as mentioned earlier, is recommended, and the Ensuro team is prepared to assist with this process.
+* Minimum Premium amount in USDC. To facilitate this, the Risk Partner must possess a wallet on the blockchain where Ensuro is deployed, containing USDC. Opening a [Circle account](https://www.circle.com/en/circle-account), as mentioned earlier, is recommended, and the Ensuro team is prepared to assist with this process.
 
 ## Pricing breakdown
 
@@ -54,7 +54,7 @@ Ensuro diligently assesses these factors to ascertain an appropriate cost of cap
 
 Once an agreement is reached with the Risk Partner, Ensuro proceeds to establish on-chain conditions for policy triggers. This mechanism can be customized for each individual policy, allowing for precise and transparent execution.
 
-## 6. Payout Transfer to Risk Partner's Wallet on the Polygon Blockchai
+## 6. Payout Transfer to Risk Partner's Wallet on the Blockchain
 
 In the event of a payout, Ensuro promptly transfers the agreed-upon amount in USDC (a stablecoin) to the wallet from which the Risk Partner originally submitted the policy. This transfer occurs within seconds of the trigger event, leveraging the efficiency of blockchain technology. The settlement process is nearly instantaneous, ensuring swift and seamless payment disbursement.
 

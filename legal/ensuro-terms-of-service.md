@@ -5,7 +5,7 @@ description: Terms of Service governing the use of the Ensuro protocol and platf
 tags:
 - legal
 - terms
-timestamp: '2026-02-19T14:22:22+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Ensuro Terms of Service
@@ -40,7 +40,7 @@ Ensuro processes personal data as described in the Privacy Policy for the purpos
 
 Before engaging in any transaction with Ensuro, you must understand and accept the material risks associated with our products, services, and activities. These risks include, but are not limited to:
 
-Cryptographic and Blockchain Risks: Ensuro operates on the Polygon blockchain, utilizing smart contracts for insurance underwriting and capital management. These systems are subject to risks such as hacking, cryptographic vulnerabilities (e.g., quantum computing advancements), and software bugs. While our smart contracts are audited, no system is immune to unforeseen exploits.
+Cryptographic and Blockchain Risks: Ensuro operates on the Ethereum blockchain, utilizing smart contracts for insurance underwriting and capital management. These systems are subject to risks such as hacking, cryptographic vulnerabilities (e.g., quantum computing advancements), and software bugs. While our smart contracts are audited, no system is immune to unforeseen exploits.
 
 DeFi Protocol Risks: Capital in eToken pools may be allocated to decentralized finance (DeFi) protocols (e.g., Aave, Compound) to generate yield. These protocols carry risks including smart contract failures, admin key compromises, and liquidity shortages.
 
@@ -138,7 +138,7 @@ b. You agree, understand, and acknowledge that any “geoblock,” or the lack t
 
 ## eToken Operations
 
-eToken holders may redeem their eTokens to withdraw capital from a segregated capital pool, subject to liquidity conditions and pool utilization rates. To initiate a redemption, you must submit a request via the Ensuro platform, triggering a smart contract transaction on the Polygon blockchain. Upon approval, the smart contract will release the corresponding stablecoin value (e.g., USDC) to your connected wallet, less any applicable fees or locked capital obligations. Redemption availability may be limited during high claim periods or if capital is allocated to active insurance policies, as outlined in the pool’s risk parameters.
+eToken holders may redeem their eTokens to withdraw capital from a segregated capital pool, subject to liquidity conditions and pool utilization rates. To initiate a redemption, you must submit a request via the Ensuro platform, triggering a smart contract transaction on the Ethereum blockchain. Upon approval, the smart contract will release the corresponding stablecoin value (e.g., USDC) to your connected wallet, less any applicable fees or locked capital obligations. Redemption availability may be limited during high claim periods or if capital is allocated to active insurance policies, as outlined in the pool’s risk parameters.
 
 For eToken pools generating yield (e.g., from allocations to DeFi protocols like Aave or Compound), Ensuro facilitates periodic distributions. Yields received in stablecoin form are transferred to a distribution smart contract, which allocates proceeds to eToken holders proportional to their stake, minus a fee of up to 5% on the yield generated. You may claim your accumulated yield through the Ensuro platform by initiating a web3 transaction, with funds delivered to your connected wallet.
 
@@ -186,7 +186,7 @@ Basis for Recovery: Your recourse for losses is restricted to the pool’s avail
 
 Stopping Pre-Authorized Transfers: No pre-authorized recurring transfers are currently offered. All transactions (e.g., redemptions, yield claims) are initiated manually by you and are final once executed on-chain, with no ability to stop them post-initiation.
 
-Receipt of Transactions: Each transaction generates a blockchain transaction hash, accessible via the Ensuro dashboard and verifiable on Polygonscan. This hash serves as your receipt; no additional documentation is provided.
+Receipt of Transactions: Each transaction generates a blockchain transaction hash, accessible via the Ensuro dashboard and verifiable on Etherscan. This hash serves as your receipt; no additional documentation is provided.
 
 Notice of Material Changes: Ensuro will provide at least 30 days’ prior notice of material changes to these Terms or Services via email or the Ensuro website (ensuro.co), as outlined in the Changes section.
 
@@ -210,7 +210,7 @@ You agree to reimburse the operator for all the costs of legal claims by others 
 
 5\. By accessing or using Ensuro’s services (including our web-based application or any affiliated interfaces), you acknowledge and agree to the following terms and the inherent risks associated with interacting with blockchain-based financial protocols and tokenized insurance-linked products.
 
-Cryptographic and Blockchain Network Risks: Ensuro operates on public blockchain networks, primarily Polygon, utilizing smart contracts for insurance risk underwriting and capital management. These networks and smart contracts are subject to ongoing technical evolution, including risks posed by quantum computing and cryptographic vulnerabilities. While Ensuro’s smart contracts have undergone external audits and adhere to rigorous security standards, the possibility of software bugs or unexpected outcomes cannot be fully eliminated.
+Cryptographic and Blockchain Network Risks: Ensuro operates on public blockchain networks, primarily Ethereum, utilizing smart contracts for insurance risk underwriting and capital management. These networks and smart contracts are subject to ongoing technical evolution, including risks posed by quantum computing and cryptographic vulnerabilities. While Ensuro’s smart contracts have undergone external audits and adhere to rigorous security standards, the possibility of software bugs or unexpected outcomes cannot be fully eliminated.
 
 Responsibility for Private Keys: eTokens and any interactions with the Ensuro platform rely on public/private key cryptography. Users are solely responsible for safeguarding their private keys and wallet credentials. Loss or compromise of your private keys may result in irrevocable loss of your digital assets. Ensuro does not have the ability to recover lost keys or restore access to funds.
 
@@ -286,7 +286,7 @@ In the event of a cyber reporting event, as defined by the Digital Asset Busines
 
 4\. These terms, plus the terms on any Services incorporating them by reference, are all the terms of agreement between you and the operator about use of the Services. This agreement entirely replaces any other agreements about your use of the Services, written or not.
 
-5\. Transaction Transparency: All eToken transactions (e.g., purchases, redemptions, yield claims) are recorded on the Polygon blockchain and viewable via the Ensuro platform’s dashboard. Each transaction generates an on-chain hash, accessible through your account interface and verifiable on a block explorer (e.g., Polygonscan). These hashes serve as your permanent, immutable receipt of activity. Ensuro does not provide additional paper or electronic receipts beyond this blockchain record.
+5\. Transaction Transparency: All eToken transactions (e.g., purchases, redemptions, yield claims) are recorded on the Ethereum blockchain and viewable via the Ensuro platform’s dashboard. Each transaction generates an on-chain hash, accessible through your account interface and verifiable on a block explorer (e.g., Etherscan). These hashes serve as your permanent, immutable receipt of activity. Ensuro does not provide additional paper or electronic receipts beyond this blockchain record.
 
 **User Agreement to be Bound By Agreement, Consent to Attempted Eligible Funds Rescues and Payment of Bounties**
 

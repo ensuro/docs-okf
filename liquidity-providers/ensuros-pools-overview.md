@@ -10,11 +10,11 @@ timestamp: '2026-07-20T21:03:37+00:00'
 
 # Ensuro's Pools – Overview
 
-[Ensuro](https://blog.ensuro.co/ensuro-2-0-is-here-df401555a65f) offers two risk tranches to Liquidity Providers.
+Ensuro offers two risk tranches to Liquidity Providers.
 
 The first tranche, the Junior Tranche, covers the losses immediately after pure premiums are exhausted. The Junior Tranche is linked to a specific partner, hence to a very specific set of risks. Covering the first risk corridor, after the expected losses corridor, it yields higher and riskier returns.
 
-The second tranche, the Senior Tranche, comes into play only when the Junior Tranche is exhausted. The Senior Tranche can be exposed to several partners (Otonomi, Koala, and Spot), achieving greater diversification. Covering the second risk corridor of multiple partners, it yields lower and safer returns.
+The second tranche, the Senior Tranche, comes into play only when the Junior Tranche is exhausted. The Senior Tranche can be exposed to several partners, achieving greater diversification. Covering the second risk corridor of multiple partners, it yields lower and safer returns.
 
 Each tranche has different returns according to the different levels of risk assumed, thus attracting different profiles of investors.
 
@@ -26,7 +26,7 @@ The **Senior Pool** is Ensuro’s low-risk investment option for Liquidity Provi
 
 In the period **May 2024 – May 2025**, the Senior Tranche delivered an **annualized return of 25.2%** and a **Sharpe ratio of 2.13**, indicating a good risk-adjusted performance. Risk is diversified across partners and product types (travel delays, cargo risks, cancel-for-any-reason), with no significant correlations between modules. This diversification is reinforced by Ensuro’s risk limits, which cap exposures by geography, seasonality, and other cluster-prone dimensions.
 
-LPs in the Senior Pool benefit from high liquidity. Withdrawals can be made at any time, subject to pool availability. Even in stress scenarios, **80% of the capital is withdrawable in under three months**, and full recovery is achievable within one year. Ensuro maintains a \~90% liquidity pool utilization rate to ensure efficient capital deployment while preserving withdrawal flexibility.
+LPs in the Senior Pool benefit from high liquidity. Withdrawals can be made at any time, subject to pool availability. Even in stress scenarios, **80% of the capital is withdrawable in under four months**, and full recovery is achievable within one year. Ensuro maintains a \~90% liquidity pool utilization rate to ensure efficient capital deployment while preserving withdrawal flexibility.
 
 #### **Risk Management**
 

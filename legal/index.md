@@ -12,5 +12,5 @@
 * [Ensuro Anti-Money Laundering & Anti-Terrorism Financing Policy Statement](ensuro-anti-money-laundering-and-anti-terrorism-financing-policy-statement.md) - Ensuro Re Ltd is dedicated to upholding the highest standards of integrity, transparency, and compliance in the global insurance landscape.
 * [Privacy Policy](privacy-policy.md) - How Ensuro collects, uses, and protects the personal data of users and investors.
 * [Ensuro Data Protection Policy](ensuro-data-protection-policy.md) - Ensuro Re Ltd. (“Ensuro”) is committed to protecting the personal data of our users, investors, risk partners, and employees.
-* [Cybersecurity Guide for Ensuro Protocol Investors](cybersecurity-guide-for-ensuro-protocol-investors.md) - The Ensuro Protocol operates as a decentralized insurance platform on the Polygon blockchain, allowing investors to provide liquidity through eTokens.
+* [Cybersecurity Guide for Ensuro Protocol Investors](cybersecurity-guide-for-ensuro-protocol-investors.md) - The Ensuro Protocol operates as a decentralized insurance platform on the Ethereum blockchain, allowing investors to provide liquidity through eTokens.
 * [Tax Guide for Ensuro Protocol Investors](tax-guide-for-ensuro-protocol-investors.md) - This guide provides essential tax information for investors holding eTokens in the Ensuro Protocol.

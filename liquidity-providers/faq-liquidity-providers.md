@@ -5,7 +5,7 @@ description: This section provides answers to frequently asked questions from Li
 tags:
 - faq
 - liquidity-providers
-timestamp: '2024-08-16T13:49:57+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # FAQ - Liquidity Providers
@@ -21,7 +21,7 @@ Your funds are managed within Ensuro's smart contracts. These contracts are:
 1. Public and open source
 2. Audited by third-party experts (Quantstamp)
 
-Transparent - your funds are visible at any time via the [Ensuro interface](https://app.ensuro.co/) or [Polygon scan](https://polygonscan.com/address/0x55bAe6690d46EA94D7F05DF7c80A85E322421fB6).
+Transparent - your funds are visible at any time via the [Ensuro interface](https://app.ensuro.co/) or a [blockchain explorer](https://etherscan.io/).
 
 ### What are the KYC requirements?
 
@@ -74,6 +74,6 @@ No, there is no minimum amount required to participate in the Ensuro Liquidity p
 
 There is no minimum deposit period required to earn returns. Yield accrues continuously from the moment of deposit.
 
-### Can I invest with volatile cryptos such as ETH or MATIC or just USDC?
+### Can I invest with volatile cryptos such as ETH or just USDC?
 
-Currently, the pool only accepts USDC on the Polygon network. This may change in the future as we consider onboarding different risk types that might require coverage in their native tokens.
+Currently, the pool only accepts USDC on Ethereum Mainnet. This may change in the future as we consider onboarding different risk types that might require coverage in their native tokens.

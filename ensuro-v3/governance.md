@@ -1,61 +1,55 @@
 ---
 type: Concept
 title: Governance
-description: Ensuro leverages Multisig and Timelock contracts to provide transparency and security for the protocol.
+description: Ensuro's governance relies on Safe multisigs and the AccessManager's timelocks to provide transparency and security for the protocol.
 tags:
 - smart-contracts
 - governance
-timestamp: '2024-03-13T20:16:37+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Governance
 
-Ensuro leverages Multisig and Timelock contracts to provide transparency and security for the protocol.
+Ensuro's governance relies on [Safe](https://safe.global/) multisigs and the execution delays enforced by the [AccessManager](../reference/accessmanager.md) to provide transparency and security for the protocol.
 
-No major changes to the protocol will ever be made without first going through an internal vetting process that requires sign-off from several senior staff members and a public announcement with an appropriate warning period enforced by a [TimelockController smart contract](https://docs.openzeppelin.com/../reference/4.x/api/governance#TimelockController).
+No major changes to the protocol will ever be made without first going through an internal vetting process that requires sign-off from several senior staff members and a public announcement with an appropriate warning period.
 
-### Timelocks
+## Multisigs
 
-Timelocks require a change to be published on the blockchain in advance. The timelock enforces a minimum waiting period for execution once the change has been proposed, and only authorized accounts or contracts can propose changes.
-
-The Timelock contracts currently in use in Ensuro are these:
-
-| Name | Delegated roles | Min. Delay | Authorized proposers |
-| --- | --- | --- | --- |
-| [ADMIN_TL](https://polygonscan.com/address/0xc0D3EcAcEBE2A8f2268D3FAE616f9DD1B94e81a2) | DEFAULT_ADMIN_ROLE<br>LEVEL1_ROLE<br>LEVEL2_ROLE | 4 days | ADMINS_MULTISIG |
-| [LEVEL2_TL](https://polygonscan.com/address/0x371d67Ee31f6bfcDF13C7fa0CC9cC2C7080Ac666) | LEVEL2_ROLE<br>LP_WHITELIST_ADMIN_ROLE_ADMIN | 18 hours | ADMINS_MULTISIG |
-| [OPERATIONAL_TL](https://polygonscan.com/address/0x76934cd2648594488a1378AC769D639933623D2a) | WITHDRAW_WON_PREMIUMS_ROLE<br>RESOLVER_ROLE_ADMIN<br>POLICY_CREATOR_ROLE_ADMIN | 6 hours | ADMINS_MULTISIG |
-
-Each timelock acts as its own admin, and proposals can be executed by one of several company EOAs once they've been scheduled and the lock time has elapsed.
-
-No accounts, besides the Timelock contracts enumerated here, are granted the `DEFAULT_ADMIN`, `LEVEL1` or `LEVEL2` roles at the protocol level. 
-
-Some of the RiskModules have the `LEVEL1` and `LEVEL2` component-specific roles delegated directly to a Multisig in some cases to allow for faster product repricing. This exception depends on the agreement with the risk partner that the RiskModule belongs to and the maturity of the product.
-
-### Multisigs
-
-| Name | Description | Members |
+| Name | Address | Description |
 | --- | --- | --- |
-| [ADMINS_MULTISIG](https://app.safe.global/settings/setup?safe=matic:0xCfcd29CD20B6c64A4C0EB56e29E5ce3CD69336D2) | Main admin multisig.<br><br>Requires at least 3 signatures from senior staff.<br><br>Permissions:<br>Propose transactions on [timelocks](governance.md#timelocks)<br>[LEVEL3_ROLE](roles.md) at protocol level<br>[LEVEL2_ROLE](roles.md) on some RiskModules<br>Role admin on [PRICER_ROLE](../reference/riskmodule.md)<br>DEFAULT_ADMIN_ROLE and GUARDIAN_ROLE on some [Peripheral contracts](audits.md#peripheral-contracts) (mainly [CashflowLenders](../reference/extensions/erc4626cashflowlender.md)) | [Colin McQueen (CFO)](https://www.linkedin.com/in/colin-mcqueen-55454b13/)<br>[Gabriel Parrondo (CISO)](https://www.linkedin.com/in/gnpar/)<br>[Gian Giacomo della Torre (CRO)](https://www.linkedin.com/in/gian-giacomo-della-torre/)<br>[Guillermo Narvaja (CTO)](https://www.linkedin.com/in/guillermonarvaja/)<br>[Luca Mungo (CSO)](https://www.linkedin.com/in/luca-mungo-a26278103/)<br>[Marco Mirabella (CEO)](https://www.linkedin.com/in/marco-mirabella/) |
-| [GUARDIAN_TEAM_1](https://app.safe.global/settings/setup?safe=matic:0x2f8CD0Dc0393139E1AFAED51F629F77A7dfB955d) | Emergency operations multisig 1. <br><br>Requires approval from all members.<br><br>Used for emergency protocol pausing or unpausing.<br><br>Permissions:<br>[GUARDIAN_ROLE](roles.md) at protocol level | [Gabriel Parrondo (CISO)](https://www.linkedin.com/in/gnpar/)<br>[Marco Mirabella (CEO)](https://www.linkedin.com/in/marco-mirabella/) |
-| [GUARDIAN_TEAM_2](https://app.safe.global/settings/setup?safe=matic:0x89735E8f678Fe72A31402d04595d36044b80909B) | Emergency operations multisig 2. <br><br>Requires approval from all members.<br><br>Used for emergency protocol pausing or unpausing.<br><br>Permissions:<br>[GUARDIAN_ROLE](roles.md) at protocol level | [Colin McQueen (CFO)](https://www.linkedin.com/in/colin-mcqueen-55454b13/)<br>[Guillermo Narvaja (CTO)](https://www.linkedin.com/in/guillermonarvaja/) |
+| ADMINS_V3 | [0xB809C75914c62DA604B1f6F1C4300bAc91797Aa1](https://etherscan.io/address/0xB809C75914c62DA604B1f6F1C4300bAc91797Aa1) | Main admin multisig. A 3/4 Safe controlled by Ensuro. Holds `ADMIN_ROLE`, `LEVEL1_ROLE` and `LEVEL2_ROLE`. |
+| LOW_RISK_V3 | [0x5848A5a692373CAd6FAAbB7b96EF43Ec1a386867](https://etherscan.io/address/0x5848A5a692373CAd6FAAbB7b96EF43Ec1a386867) | Emergency multisig with the same signers as ADMINS_V3 but a threshold of 2. Holds `GUARDIAN_ROLE` and other non-critical roles. |
+| TREASURY_V3 | [0x03Dabf3315C794807A27516d7440F41B427eD40f](https://etherscan.io/address/0x03Dabf3315C794807A27516d7440F41B427eD40f) | Main treasury multisig (3/4 Safe controlled by Ensuro). Receives Ensuro fees and executes other treasury related operations. |
+| TREASURY_PETTY_CASH | [0x3385a4dcfEc931DCFD185616b1323ABf7120674B](https://etherscan.io/address/0x3385a4dcfEc931DCFD185616b1323ABf7120674B) | Petty cash multisig requiring 2/6 signatures. Used for day-to-day operative roles. |
+| RECOVERY_MULTISIG | [0xA6CA4bFF8F0197D8d675B585d8aD12165Cebb5cB](https://etherscan.io/address/0xA6CA4bFF8F0197D8d675B585d8aD12165Cebb5cB) | Recovery multisig. 4/8 multisig with Safe account recovery rights (delays of +21 days). |
 
-### Transaction signing
+## Operative accounts
 
-All members of the multisigs must use secure hardware wallets or isolated environments for signing transactions. This is audited internally as part of our compliance program with the Bermuda Monetary Authority.
+Besides the multisigs, several accounts are used by Ensuro's team and automated processes to hold the [operative roles](roles.md#operative-roles):
 
-Transactions are signed using [Safe Wallet Multisigs](https://safe.global/) as documented above.
+| Name | Address | Description |
+| --- | --- | --- |
+| MIMIC_SMART_ACCOUNT | [0x85E8647d9228196A3D6d89e8c9Bbe096276500E4](https://etherscan.io/address/0x85E8647d9228196A3D6d89e8c9Bbe096276500E4) | Smart account operated with [Mimic Protocol](https://mimic.fi/) to execute automations and scheduled operations. |
+| DEPLOYER_V3 | [0x0EF551eA2291ebC83EF6ba1B9d7c3f5847fa9b0a](https://etherscan.io/address/0x0EF551eA2291ebC83EF6ba1B9d7c3f5847fa9b0a) | Deployer account used for contract deployments, initial configuration and minor operative tasks. |
+| RELAYER_BRIDGE | [0xB8aCc68DAEDb5C131870D71f83d2FF7BFc89bFb7](https://etherscan.io/address/0xB8aCc68DAEDb5C131870D71f83d2FF7BFc89bFb7) | Relayer account used for relaying risk partners operations and other operative tasks. |
+| OFFCHAIN_EOA | [0xF38785DFF30B39aB5fF4afd58a6E4DCD87D34553](https://etherscan.io/address/0xF38785DFF30B39aB5fF4afd58a6E4DCD87D34553) | Offchain account used by Ensuro's back-end to expire policies (uses `multicall`). |
+| CFL_GATEWAY_ACCOUNT_EP | [0x7529ABff0F8665A4E7FcD532d0f528090435D10E](https://etherscan.io/address/0x7529ABff0F8665A4E7FcD532d0f528090435D10E) | Account-abstraction gateway that forwards operations to the cash-flow lender. Gas-optimized smart account that follows entrypoint interface. |
 
-All critical transactions, such as upgrades or major parameter changes, must require at least 3 different senior staff members to sign.
+## Timelocks and delays
 
-### Restricted Executor
+The AccessManager enforces an execution delay on the roles it grants. A change must first be scheduled, and it can only be executed once the corresponding delay has elapsed.
 
-In some cases, we have integrated our monitoring system (Ensuro Forta Bot, Forta feeds, Openzeppelin Defender sentinels and internal transaction monitoring) into our automated incident response.
+| Role | Delay |
+| --- | --- |
+| ADMIN_ROLE | 4 days |
+| LEVEL1_ROLE | 4 days |
+| LEVEL2_ROLE | 18 hours |
 
-This requires a service account to have the ability to instantly pause the protocol in reaction to some alerts.
+## Transaction signing
 
-Given that our GUARDIAN\_ROLE, which is the one used for pausing, can also unpause and upgrade contracts, we have created an intermediate contract called [Restricted Executor ](https://github.com/ensuro/restricted-executor?tab=readme-ov-file)that allows us to delegate a single operation instead of a full role.
+All members of the multisigs must use secure hardware wallets and isolated environments for signing transactions. This is audited internally as part of our compliance program with the Bermuda Monetary Authority.
 
-| Name                                                                                               | Permissions                                                                                                                             | Authorized operations                                                                                                                                |
-| -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [RESTRICTED\_EXECUTOR](https://polygonscan.com/address/0x174F4498aF0a5102234Ad24d16Ed6E698E48Fa65) | <ul><li><a href="roles.md">GUARDIAN_ROLE</a> on specific <a href="../reference/premiumsaccount.md">PremiumsAccount</a> contracts</li></ul> | <ul><li>pause() authorized to an <a href="https://polygonscan.com/address/0x11Ca23Ef7d05fF86EECd8FE8324f35693bd27Cc9">operational EOA</a>.</li></ul> |
+Transactions are signed using [Safe Wallet Multisigs](https://safe.global/), as described above.
+
+All critical transactions, such as upgrades or major parameter changes, must be signed by at least 3 different senior staff members.

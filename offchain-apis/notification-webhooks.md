@@ -5,7 +5,7 @@ description: These callbacks are made from Ensuro's system back to partner's sys
 tags:
 - api
 - webhooks
-timestamp: '2026-07-21T16:30:11+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Callback notifications
@@ -305,9 +305,9 @@ When a policy's resolution has an unrecoverable error a notification like the fo
         "payout": "10000",
         "policy": {
             "id": 12,
-            "url": "https://offchain-v2.ensuro.co/api/policies/12/",
+            "url": "https://offchain-v3.ensuro.co/api/policies/12/",
             "ensuro_id": "55290711940124341656440333382658655728151858290221369410762348674130909154134",
-            "rm": "https://offchain-v2.ensuro.co/api/riskmodules/0x7A3D6f180ABDAA8C35949a48Cd590bA1c06CDF33/",
+            "rm": "https://offchain-v3.ensuro.co/api/riskmodules/0x7A3D6f180ABDAA8C35949a48Cd590bA1c06CDF33/",
             "quote": null,
             "premium": "2.191125",
             "payout": "28.980000",
@@ -574,13 +574,13 @@ When a policy's replacement has an unrecoverable error a notification like the f
             "ensuro_commission": "0.272481",
             "status": "active",
             "sr_scr": "5.600000",
-            "url": "https://offchain-v2.ensuro.co/api/policies/352136/",
+            "url": "https://offchain-v3.ensuro.co/api/policies/352136/",
             "jr_coc": "0.446997",
             "loss_prob": "0.028812547325078279",
             "ensuro_id": "104165209084408127675421213904488324566295479272568976442517413012439276373189",
-            "rm": "https://offchain-v2.ensuro.co/api/riskmodules/0xe64b6B463c3B3Cb3475fb940B64Ef6f946D6F460/",
+            "rm": "https://offchain-v3.ensuro.co/api/riskmodules/0xe64b6B463c3B3Cb3475fb940B64Ef6f946D6F460/",
             "premium": "2.997291",
-            "quote": "https://offchain-v2.ensuro.co/api/quotes/374167/",
+            "quote": "https://offchain-v3.ensuro.co/api/quotes/374167/",
             "payout": "56.000000"
         }
     },

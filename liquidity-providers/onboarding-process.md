@@ -5,7 +5,7 @@ description: To invest in the Ensuro pool, Liquidity providers (LPs) need to hav
 tags:
 - liquidity-providers
 - onboarding
-timestamp: '2026-01-27T18:31:51+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Onboarding process
@@ -13,7 +13,7 @@ timestamp: '2026-01-27T18:31:51+00:00'
 ### How do I invest in a Ensuro pool?
 
 To invest in the Ensuro pool, Liquidity providers (LPs) need to have a non-custodial wallet installed in their browser (e.g. Metamask) or installed in their phone (e.g. Coinbase wallet, Trust wallet, etc) that can be connected using Wallet Connect.<br>
-The LPs need to operate on the Polygon network. More information on how to add a new network to your wallet can be found [here](https://wiki.polygon.technology/docs/develop/metamask/config-polygon-on-metamask/).
+The LPs need to operate on the network where Ensuro is deployed. Refer to the [Deployments](../ensuro-v3/deployments/overview.md) page for the currently supported networks, and to your wallet's documentation for instructions on how to add a network.
 
 When entering the Ensuro [website](https://app.ensuro.co/), the LPs can select which pool to invest their funds in. Currently, Ensuro has two types of pools: Junior and Senior. The Junior pool covers the first tranche of the risk, while the Senior pool covers the remainder. The Junior Pool is riskier and thus rewards the LPs with a higher interest rate, while the Senior Pool is less risky,which is reflected in the relatively lower interest rate. More information about the structure of the product can be found [here](../ensuro-v3/faq.md#how-does-ensuro-connect-defi-to-insurance).
 
