@@ -1,0 +1,18 @@
+title Policy expiration
+
+actor Anon
+participant PolicyPool
+participant PremiumsAccount
+participant Junior EToken
+participant Senior EToken
+
+Anon->PolicyPool:expirePolicy(policy)
+PolicyPool->PolicyPool:_validate(policy.hash()=_policies[policy.id]) &&\n block.timestamp > policy.expiration
+PolicyPool->PremiumsAccount:policyExpired(policy)
+PremiumsAccount->PremiumsAccount:_storePurePremiumWon(policy.purePremium)
+PremiumsAccount->Junior EToken:unlockScr(policy.id, jrScr, jrInterestRate, adjustment)
+PremiumsAccount->Senior EToken:unlockScr(policy.id, srScr, srInterestRate, adjustment)
+PolicyPool->PolicyPool:delete _policies[policy.id]
+opt if policyHolder is a contract
+PolicyPool->PolicyHolder:onPolicyExpired(...)
+end

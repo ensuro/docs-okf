@@ -1,0 +1,25 @@
+title Policy Cancellation
+
+actor Pricer
+participant RiskModule
+participant Underwriter
+participant PolicyPool
+participant PremiumsAccount
+participant USDC
+participant Junior EToken
+participant Senior EToken
+
+Pricer->RiskModule:cancelPolicy(inputData)
+RiskModule->Underwriter:pricePolicyCancellation(rm, inputData)
+Underwriter-->RiskModule:policyToCancel, purePremiumRefund,\n jrCocRefund, srCocRefund
+RiskModule->PolicyPool:cancelPolicy(policyToCancel, purePremiumRefund,\n jrCocRefund, srCocRefund)
+PolicyPool->PolicyPool:validate policy is active
+PolicyPool->PremiumsAccount:policyCancelled(policy, purePremiumRefund,\n jrCocRefund, srCocRefund, policyHolder)
+PremiumsAccount->PremiumsAccount:activePurePremiums -= policy.purePremium
+PremiumsAccount->Junior EToken:unlockScrWithRefund(jrScr, ..., policyHolder, jrCocRefund)
+PremiumsAccount->Senior EToken:unlockScrWithRefund(srScr, ..., policyHolder, srCocRefund)
+PremiumsAccount->USDC:transfer(policyHolder, purePremiumRefund)
+opt if premiums are insufficient
+PremiumsAccount->Junior EToken:internalLoan(borrow, policyHolder)
+end
+PolicyPool->PolicyPool:emit PolicyCancelled(policy.id,\n purePremiumRefund, jrCocRefund, srCocRefund)

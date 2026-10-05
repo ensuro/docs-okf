@@ -1,0 +1,28 @@
+title New Policy
+
+actor Pricer
+participant RiskModule
+participant Underwriter
+participant PolicyPool
+participant PremiumsAccount
+participant Junior EToken
+participant Senior EToken
+participant USDC
+
+Pricer->RiskModule:newPolicy(inputData, onBehalfOf)
+RiskModule->Underwriter:priceNewPolicy(rm, inputData)
+Underwriter--&amp;RiskModule:payout, premium, lossProb, expiration,\n internalId, params
+RiskModule->RiskModule:Policy.initialize(...)
+RiskModule->PolicyPool:newPolicy(policy, payer, onBehalfOf)
+PolicyPool->PolicyPool:policy.id = (address(rm) << 96) + internalId
+PolicyPool->PremiumsAccount:policyCreated(policy)
+PremiumsAccount->PremiumsAccount:activePurePremiums += policy.purePremium
+PremiumsAccount->Junior EToken:lockScr(policy.id, jrScr, jrInterestRate)
+PremiumsAccount->Senior EToken:lockScr(policy.id, srScr, srInterestRate)
+PolicyPool->PolicyPool:_mintNFT(onBehalfOf, policy.id)
+PolicyPool->USDC:transferFrom(payer, premiumsAccount, purePremium)
+PolicyPool->USDC:transferFrom(payer, seniorEtk, srCoc)
+PolicyPool->USDC:transferFrom(payer, juniorEtk, jrCoc)
+PolicyPool->USDC:transferFrom(payer, ensuroTreasury, ensuroCommission)
+PolicyPool->USDC:transferFrom(payer, partner, partnerCommission)
+PolicyPool->PolicyPool:emit NewPolicy(policy)

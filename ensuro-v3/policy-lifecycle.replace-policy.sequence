@@ -1,0 +1,24 @@
+title Policy Replacement
+
+actor Pricer
+participant RiskModule
+participant Underwriter
+participant PolicyPool
+participant PremiumsAccount
+participant Junior EToken
+participant Senior EToken
+
+Pricer->RiskModule:replacePolicy(inputData)
+RiskModule->Underwriter:pricePolicyReplacement(rm, inputData)
+Underwriter-->RiskModule:oldPolicy, payout, premium, lossProb,\n expiration, internalId, params
+RiskModule->RiskModule:Policy.initialize(...)
+RiskModule->PolicyPool:replacePolicy(oldPolicy, newPolicy, payer)
+PolicyPool->PolicyPool:validate oldPolicy active & new components >= old
+PolicyPool->PremiumsAccount:policyReplaced(oldPolicy, newPolicy)
+PremiumsAccount->PremiumsAccount:activePurePremiums += new.purePremium - old.purePremium
+PremiumsAccount->Junior EToken:unlockScr(old.id, old.jrScr, old.jrInterestRate, adjustment)
+PremiumsAccount->Junior EToken:lockScr(new.id, new.jrScr, new.jrInterestRate)
+PremiumsAccount->Senior EToken:unlockScr(old.id, old.srScr, old.srInterestRate, adjustment)
+PremiumsAccount->Senior EToken:lockScr(new.id, new.srScr, new.srInterestRate)
+PolicyPool->PolicyPool:_mintNFT(policyHolder, newPolicy.id)
+PolicyPool->PolicyPool:emit PolicyReplaced(old.id, new.id) &\n NewPolicy(newPolicy)
