@@ -1,0 +1,30 @@
+title Policy resolved with Payout
+
+actor Resolver
+participant RiskModule
+participant PolicyPool
+participant PremiumsAccount
+participant USDC
+participant Junior EToken
+participant Senior EToken
+
+Resolver->RiskModule:resolvePolicy(policy, payout)
+RiskModule->PolicyPool:resolvePolicy(policy, payout)
+PolicyPool->PolicyPool:_validate(policy.hash()=_policies[policy.id])
+PolicyPool->PremiumsAccount:policyResolvedWithPayout(policyHolder, policy, payout)
+PremiumsAccount->Junior EToken:unlockScr(policy.id, jrScr, jrInterestRate, adjustment)
+PremiumsAccount->Senior EToken:unlockScr(policy.id, srScr, srInterestRate, adjustment)
+PremiumsAccount->PremiumsAccount:_payFromPremiums(payout - purePremium)
+opt if premiums are exhausted
+PremiumsAccount->Junior EToken:internalLoan(amountLeft, policyHolder)
+Junior EToken->USDC:transfer(policyHolder, lended)
+opt if Junior EToken is exhausted
+PremiumsAccount->Senior EToken:internalLoan(amountLeft, policyHolder)
+Senior EToken->USDC:transfer(policyHolder, lended)
+end
+end
+PremiumsAccount->USDC:transfer(policyHolder, payout - borrowed)
+PolicyPool->PolicyPool:delete _policies[policy.id]
+opt if policyHolder is a contract
+PolicyPool->PolicyHolder:onPayoutReceived(...)
+end
