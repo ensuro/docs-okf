@@ -28,6 +28,10 @@ site ([ensuro/docs](https://github.com/ensuro/docs) @ `5cc0120`, archived) on 20
 * Content is renderer-neutral markdown: no GitBook/MkDocs-specific syntax. Notes are written as
   `> **Note:** ...` blockquotes; multi-language code samples use `#### Shell` / `#### Python` /
   `#### NodeJS` subheadings; math uses `$$ ... $$` blocks.
+* Simple HTML is allowed for a small set of inline/formatting tags: `br`, `ul`, `ol`, `li`,
+  `sub`, `sup` and `kbd` (e.g. `<br>` for line breaks inside table cells, `<ul>`/`<li>` for lists
+  in a cell). Any other raw HTML is rejected by the conformance checker; use native markdown for
+  links, emphasis, code and headings instead of `<a>`, `<em>`, `<code>`, `<p>`, etc.
 * Internal links are relative markdown links to the target `.md` file. Binary assets live under
   `assets/images/`; OpenAPI specs under `assets/openapi/`.
 * When adding/removing/renaming concepts, update the affected `index.md` files and add an entry
