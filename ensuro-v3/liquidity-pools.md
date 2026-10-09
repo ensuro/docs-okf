@@ -5,7 +5,7 @@ description: The solvency to cover the potential losses does not simply come fro
 tags:
 - smart-contracts
 - liquidity
-timestamp: '2023-06-20T18:28:11+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Liquidity pools
@@ -73,6 +73,28 @@ $$
 
 Progressive disbursing of the cost of capital allows us to have a dynamic capital pool where liquidity providers can jump in and out and get returns proportional to their share and the utilization rate of the pool at every point in time.
 
+## Asset management yield
+
+Besides the insurance yield described in the previous section, the pools also have a yield coming from the fact that most of the funds of the pool are invested in asset management strategies that generate additional returns. See the [Asset Management](asset-management.md) page for the details.
+
+The resulting yield of an eToken is thus the addition of the insurance yield (the cost of capital of the locked solvency capital) and the asset management yield.
+
+## eTokens are rebasing tokens
+
+The eTokens are rebasing tokens pegged 1:1 to the underlying asset (USDC). Their balances increase over time with the yields: as the pool accrues returns, the balance of each liquidity provider grows proportionally, without requiring any additional transaction.
+
+### Wrapped eToken (WEToken)
+
+For integrations with DeFi protocols that expect a fixed-supply (non-rebasing) token, Ensuro provides the [WEToken](https://github.com/ensuro/ensuro/blob/main/contracts/WEToken.sol), a non-rebasing wrapper of the eTokens that follows the [ERC-4626](https://eips.ethereum.org/EIPS/eip-4626) interface. Instead of growing the balance, each WEToken becomes redeemable for an increasing amount of eTokens as the pool accrues yield.
+
+This is analogous to Lido's [stETH and wstETH](https://help.lido.fi/en/articles/5230610-what-is-wrapped-steth-wsteth): stETH is rebasing, while wstETH is a non-rebasing wrapper whose value increases over time.
+
+## Liquidity
+
+The liquidity providers can withdraw immediately (unless the pool has a [cooldown period](#withdrawal-cooldown)) as long as, after the withdrawal, the utilization rate remains under 100%. In other words, they can withdraw all the funds except the ones locked as solvency capital (SCR) of active policies.
+
+The `maxUtilizationRate` parameter, when lower than 100%, guarantees that funds can't be re-locked while LPs are exiting the pool. Given the expiration dates of the covered policies, the LPs can anticipate the worst-case scenario (assuming all the LPs want to exit) of when their funds will be unlocked.
+
 ## Operations
 
 ### Deposit
@@ -96,6 +118,20 @@ $$
 So, the user will be able to withdraw the minimum between his balance and the _totalWithdrawable_ of the pool.
 
 This operation decreases the total supply without affecting the scr, thus increasing the utilization rate.
+
+> **Note:** **Optional cooldown** — some pools can have a _Cooler_ contract attached. In those pools, immediate withdrawals are disabled and must be scheduled in advance. See [Withdrawal cooldown](#withdrawal-cooldown) below.
+
+### Withdrawal cooldown
+
+Each eToken can optionally have a _Cooler_ contract attached. When a cooler is present, immediate withdrawals are disabled and the liquidity provider must schedule the withdrawal in advance:
+
+1. **Schedule** — the LP calls `scheduleWithdrawal` (or `scheduleWithdrawalWithPermit`, which uses an EIP-2612 signed approval for a gasless transaction), transferring their eTokens to the cooler. In exchange, they receive an NFT that represents the withdrawal position.
+2. **Cooldown** — the withdrawal can only be executed once the cooldown period, configured per eToken with `setCooldownPeriod`, has elapsed.
+3. **Execute** — after the cooldown, the owner of the NFT calls `executeWithdrawal`. The eTokens held by the cooler are burned and the underlying asset is transferred to the NFT owner.
+
+The value received at execution time can differ from the requested amount because of earnings or losses accrued during the cooldown period. If the position earned value, the LP receives at most the requested amount, and the excess is redistributed to the remaining LPs. If it lost value, the LP receives less.
+
+A cooldown might be required in some pools to anticipate the capital flows, or to avoid someone taking an excessive advantage from information asymmetry.
 
 ### Lock
 
@@ -121,13 +157,13 @@ The solvency capital provided by the eTokens won't be touched most of the time w
 
 These funds will be given as an internal loan between the eToken (lender) and the PremiumsAccount (borrower). They will be repaid in the future when/if the losses are less than expected and the PremiumsAccount has a surplus.
 
-The loan comes with interests defined in the _poolLoanInterestRate_ parameter.
+The loan comes with interests defined in the _internalLoanInterestRate_ parameter.
 
 This operation decreases the total supply producing a negative return to the LPs.
 
 ### Internal loan repayment
 
-When policies expire without a claim, if the PremiumsAccount has an outstanding debt with the eToken, it repays it with the _pure premium_ of the expired policy. This operation is repeated for each expired policy until all the debt has been repaid.
+When losses are less than expected and the PremiumsAccount accumulates a surplus, it can repay its outstanding debt with the eTokens by calling `repayLoans`. This operation is triggered by an operative account (with the `REPAY_LOANS_ROLE`) rather than automatically on policy expiration.
 
 This operation increases the total supply producing a positive return to the LPs.
 
@@ -135,9 +171,9 @@ This operation increases the total supply producing a positive return to the LPs
 
 | Operation | SCR | Total Supply | Utilization Rate | Limits |
 | --- | --- | --- | --- | --- |
-| deposit | = | ↑ | ↓ | minUtilizationRate |
-| withdraw | = | ↓ | ↑ | utilizationRate < 100% |
-| lock | ↑ | = | ↑ | maxUtilizationRate |
-| unlock | ↓ | = | ↓ | none |
-| internalLoan | = | ↓ | ↓ | totalSupply or fundsAvailable |
-| repayLoan | = | ↑ | ↑ | none |
+| deposit | 🟰 | 🔼 | 🔽 | minUtilizationRate |
+| withdraw | 🟰 | 🔽 | 🔼 | utilizationRate < 100% |
+| lock | 🔼 | 🟰 | 🔼 | maxUtilizationRate |
+| unlock | 🔽 | 🟰 | 🔽 | none |
+| internalLoan | 🟰 | 🔽 | 🔽 | totalSupply or fundsAvailable |
+| repayLoan | 🟰 | 🔼 | 🔼 | none |
