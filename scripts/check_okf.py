@@ -8,6 +8,7 @@ Validates:
   3. Internal markdown links (relative) resolve to existing files inside the bundle.
   4. Anchors in internal links resolve to headings in the target file (best effort, warning).
   5. Referenced assets (images, specs) exist.
+  6. Raw HTML is limited to a small "simple HTML" allowlist (br, ul, ol, li, sub, sup, kbd).
 
 Exit code 0 = conformant (warnings allowed), 1 = errors found.
 """
@@ -21,6 +22,10 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 RESERVED = ("index.md", "log.md", "README.md")
 SKIP_DIRS = {".git", "scripts", "site", ".venv", "node_modules"}
+
+# "Simple HTML" tags allowed in content (see AGENTS.md). Anything else is an error.
+ALLOWED_HTML_TAGS = {"br", "ul", "ol", "li", "sub", "sup", "kbd"}
+HTML_TAG_RE = re.compile(r"</?([a-zA-Z][a-zA-Z0-9-]*)(?:\s[^<>]*)?>")
 
 errors = []
 warnings = []
@@ -68,6 +73,25 @@ def frontmatter_of(path):
         return yaml.safe_load(m.group(1)), text[m.end():]
     except yaml.YAMLError as e:
         return {"__parse_error__": str(e)}, text[m.end():]
+
+
+def check_html_tags(rel, body):
+    """Flag any raw HTML tag outside the simple-HTML allowlist (code is ignored)."""
+    in_code = False
+    for line in body.split("\n"):
+        stripped = line.strip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_code = not in_code
+            continue
+        if in_code:
+            continue
+        # Ignore inline code spans and HTML comments before scanning.
+        line = re.sub(r"`[^`]*`", "", line)
+        line = re.sub(r"<!--.*?-->", "", line)
+        for m in HTML_TAG_RE.finditer(line):
+            tag = m.group(1).lower()
+            if tag not in ALLOWED_HTML_TAGS:
+                errors.append(f"{rel}: non-simple HTML tag <{tag}> is not allowed")
 
 
 def main():
@@ -122,6 +146,8 @@ def main():
             elif anchor and resolved.suffix == ".md":
                 if slugify(anchor) not in anchors_of(resolved) and anchor not in anchors_of(resolved):
                     warnings.append(f"{rel}: unresolved anchor #{anchor} in {resolved.relative_to(ROOT)}")
+
+        check_html_tags(rel, body)
 
     for e in errors:
         print(f"ERROR   {e}")

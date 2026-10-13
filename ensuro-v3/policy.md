@@ -5,7 +5,7 @@ description: Data structure and parameters of an insurance policy in the Ensuro 
 tags:
 - smart-contracts
 - policies
-timestamp: '2025-04-16T15:35:04+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Policies
@@ -14,18 +14,16 @@ Policies are a struct with the following data:
 
 | Field             | Type                  | Description                                                                                                                                                                               |
 | ----------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id                | uint256               | <p>Unique id of the policy within the protocol. This id is created combining the risk module address and an internalId.<br><code>id = address(rm) << 96 + internalId</code></p> |
+| id                | uint256               | Unique id of the policy within the protocol. This id is created combining the risk module address and an internalId: `id = address(rm) << 96 + internalId` |
 | payout            | uint256 (amount)      | The maximum payout to be paid for this policy.                                                                                                                                            |
-| premium           | uint256 (amount)      | The premium paid for this policy                                                                                                                                                          |
 | jrScr             | uint256 (amount)      | The junior solvency capital (see breakdown below)                                                                                                                                         |
 | srScr             | uint256 (amount)      | The senior solvency capital (see breakdown below)                                                                                                                                         |
-| lossProb          | uint256 (wad)         | The probability of having to pay the maximum payout (see lossProbe note [here](policy-lifecycle.md#new-policy))                                                                           |
-| purePremium       | uint256 (amount)      | <p>The expected loss for the policy. It's calculated as:<br><code>purePremium = payout * lossProb * rm.moc</code></p>                                                                     |
+| lossProb          | uint256 (wad)         | The probability of having to pay the maximum payout (see lossProb note [here](policy-lifecycle.md#new-policy))                                                                           |
+| purePremium       | uint256 (amount)      | The expected loss for the policy. It's calculated as `purePremium = payout * lossProb * moc` |
 | ensuroCommission  | uint256 (amount)      | Ensuro's commission (see premium split below)                                                                                                                                             |
 | partnerCommission | uint256 (amount)      | Risk partner's commission (see premium split below)                                                                                                                                       |
 | jrCoc             | uint256 (amount)      | The cost of capital paid for the Junior Solvency (jrScr).                                                                                                                                 |
 | srCoc             | uint256 (amount)      | The cost of capital paid for the Senior Solvency (srScr).                                                                                                                                 |
-| riskModule        | IRiskModule (address) | The risk module that created the policy.                                                                                                                                                  |
 | start             | uint40 (timestamp)    | The timestamp when the policy was created                                                                                                                                                 |
 | expiration        | uint40 (timestamp)    | The timestamp when the policy expires                                                                                                                                                     |
 
@@ -35,17 +33,21 @@ Policies are a struct with the following data:
 >
 > **timestamp**: date/time expressed as Unix date (seconds since 1/1/1970 UTC).
 
+> **Note:** The total premium is not stored as a separate field; it's the sum of the premium components: `premium = purePremium + jrCoc + srCoc + ensuroCommission + partnerCommission`.
+>
+> The risk module is also not stored as a field: it's the first 160 bits of the policy id (see [Policy Ids](#policy-ids) below).
+
 ## Solvency breakdown
 
 Some policy fields relate to how the policies' solvency capital is computed; we describe them in the following.
 
-The solvency capital for each policy is the product of two metrics: the policy's _payout_ and _collateralization ratio._ The _payout_ field defines the maximum exposure for a given policy. The _collateralization ratio_ defines the portion of the maximum payout that needs to be stored in the protocol to guarantee solvency up to a desired probability. It is a parameter at the risk module level needed and is computed by Ensuro's quantitative team via stochastical modeling of the portfolio.
+The solvency capital for each policy is the product of two metrics: the policy's _payout_ and _collateralization ratio._ The _payout_ field defines the maximum exposure for a given policy. The _collateralization ratio_ defines the portion of the maximum payout that needs to be stored in the protocol to guarantee solvency up to a desired probability. It is one of the pricing parameters provided off-chain for each policy and computed by Ensuro's quantitative team via stochastical modeling of the portfolio.
 
 > **Note:** **A simple example for explaining the collateralization ratio**
 >
 > If you toss 1000 coins, there are >99.5% chances that the number of heads is less or equal to 541 (check [Binomial distribution](https://en.wikipedia.org/wiki/Binomial_distribution) formulas). If our policy pays $ 1 for each tossed coin that gets a head, the size of our portfolio is around 1000 policies, and we want to cover losses with a confidence level of 99.5%, we can keep the collateralization ratio to 54.1% and lock only 0.541 dollars for each policy.
 
-Again, the _collateralization ratio_ times the _payout_ gives the amount of solvency we need. Part of the solvency comes from the _pure premium_ and covers the expected losses. The rest of the solvency is provided by two capital pools (eTokens), the junior eToken and the senior eToken. Another risk module parameter, the junior collateralization ratio, defines the split between these two capital pools.
+Again, the _collateralization ratio_ times the _payout_ gives the amount of solvency we need. Part of the solvency comes from the _pure premium_ and covers the expected losses. The rest of the solvency is provided by two capital pools (eTokens), the junior eToken and the senior eToken. Another pricing parameter, the junior collateralization ratio, defines the split between these two capital pools.
 
 All these values are calculated on policy creation, used to lock the different components of the solvency, and are immutable.
 
@@ -53,7 +55,7 @@ All these values are calculated on policy creation, used to lock the different c
 
 > **Note:** The confidence levels that define the solvency breakdown might change from one product to another. Some products might even be fully collateralized (confidence level = 100% = collateralization ratio).
 >
-> The confidence level used for the junior eToken is also a business decision. In some cases, where there is some uncertainty around a model's performance,  we might allocate as pure premium more than expected losses (see MoC parameter in RiskModule).
+> The confidence level used for the junior eToken is also a business decision. In some cases, where there is some uncertainty around a model's performance, we might allocate as pure premium more than expected losses (see the MoC parameter below).
 
 > **Note:** **Full example for our **_**tossing coin insurance**_**:**
 >
@@ -69,31 +71,33 @@ All these values are calculated on policy creation, used to lock the different c
 
 The premium paid by the policyholder needs to cover different costs/fees: the expected losses, the cost of capital and the risk exposure of the additional capital locked, and the fees for Ensuro and the risk partner.
 
+> **Note:** The pricing parameters used below (the MoC, the collateralization ratios, the returns on capital and the fee percentages) are not stored on-chain. They are provided off-chain by the risk partner (or an authorized signer) and validated by the [Underwriter](policy-lifecycle.md#new-policy).
+
 ### Pure Premium
 
 $$
-purePremium = payout  * lossProb * rm.MoC
+purePremium = payout * lossProb * moc
 $$
 
-​Both _payout_ and _lossProb_ are parameters that come as an input, policy by policy, validated by the risk module Smart Contract.​
+Both _payout_ and _lossProb_ are parameters that come as an input, policy by policy, validated by the Underwriter contract.
 
-The _MoC (Margin of Conservatism)_ is a parameter at the risk module level. It is used to mitigate the risk coming from uncertainty around models' performances. It is equal to 1.0 in the neutral case and > 1.0  for uncertain models. It gurantees an additional layer of protection for the LPs. If the performance shows we overestimated the losses and we have accumulated premiums, it might be adjusted with an MoC less than 1.0.
+The _MoC (Margin of Conservatism)_ is a pricing parameter provided off-chain. It is used to mitigate the risk coming from uncertainty around models' performances. It is equal to 1.0 in the neutral case and > 1.0 for uncertain models. It guarantees an additional layer of protection for the LPs. If the performance shows we overestimated the losses and we have accumulated premiums, it might be adjusted with an MoC less than 1.0.
 
 ### Junior and Senior Cost of Capital
 
 $$
-jrCoc = jrScr * rm.jrRoc * (expiration - start) / secondsPerYear
+jrCoc = jrScr * jrRoc * (expiration - start) / secondsPerYear
 $$
 
-​The _Junior Cost of Capital_ (and, analogously, the _Senior CoC_) is calculated as an interest to be paid for the capital locked. It is the product of the _jrScr_ (explained in the section above), the duration of the policy (as a fraction of the year), and the _jrRoc_, a risk module parameter that defines the annualized return expected by the liquidity providers.
+The _Junior Cost of Capital_ (and, analogously, the _Senior CoC_) is calculated as an interest to be paid for the capital locked. It is the product of the _jrScr_ (explained in the section above), the duration of the policy (as a fraction of the year), and the _jrRoc_, a pricing parameter that defines the annualized return expected by the liquidity providers.
 
 ### Ensuro commission
 
 $$
-ensuroCommission = purePremium * rm.ensuroPpFee + (jrCoc +srCoc)*rm.ensuroCocFee
+ensuroCommission = purePremium * ensuroPpFee + (jrCoc + srCoc) * ensuroCocFee
 $$
 
-​The commission charged by the protocol is based on two parameters defined at the risk module level, a percentage on the pure premium and a percentage on the cost of capital. This pricing structure is flexible enough to provide a fair price for a diverse set of products.
+The commission charged by the protocol is based on two pricing parameters provided off-chain, a percentage on the pure premium and a percentage on the cost of capital. This pricing structure is flexible enough to provide a fair price for a diverse set of products.
 
 ### Minimum premium
 
@@ -133,6 +137,6 @@ If, instead of using a deterministic id based on the input parameters, a risk mo
 
 ## On-chain storage
 
-Given that the Policy struct has many fields and storage is expensive on-chain, the struct is not stored as a storage variable of the contracts. 
+Given that the Policy struct has many fields and storage is expensive on-chain, the struct is not stored as a storage variable of the contracts.
 
 Instead, when the policy is created, only a hash of the struct is stored, and an event with all the fields is emitted. Then, for any operation with the Policy (like resolution or expiration), all the policy needs to be sent as a parameter. The PolicyPool contract computes the hash of the parameter and compares it with the stored one.

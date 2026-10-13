@@ -5,7 +5,7 @@ description: Every policy sold pays a premium; part of that premium is the pure 
 tags:
 - smart-contracts
 - premiums
-timestamp: '2022-11-21T17:40:26+00:00'
+timestamp: '2026-09-22T00:00:00+00:00'
 ---
 
 # Premiums Accounts
@@ -22,20 +22,35 @@ On the solvency side, each Premiums Account might be linked to a junior eToken a
 
 ## Pure premiums
 
-The _premiums account_ contract keeps track of the pure premiums. On one side, it tracks the _active pure premiums_, i.e., the pure premiums of the active policies of the connected _risk modules_.
+The _premiums account_ contract keeps track of the pure premiums in two concepts:
 
-Pure premiums accounts earn funds when a policy expires and have losses when there's a payout. For covering the losses, the precedence is:
+* **Active pure premiums**: the pure premiums of the active policies of the connected _risk modules_.
+* **Surplus (or deficit)**: the accumulated result of the finalized policies, i.e., the pure premiums collected minus the losses paid. When positive, it's the _won pure premiums_ available to cover losses. When negative, it means the account used part of the active pure premiums (up to a limit, see below) to cover past losses.
 
-1. _**Won pure premiums**_: the accumulated surplus of premiums earned from past expired policies.
-2. **Borrow from active premiums**: the pure premiums of active policies are used for payouts.
-3. _**Junior eToken**_: takes an [internal loan](liquidity-pools.md#internal-loan) from the junior eToken.
-4. _**Senior eToken**_: takes an [internal loan](liquidity-pools.md#internal-loan) from the senior eToken.
+For covering the losses of a payout, the precedence is:
+
+1. _**Won pure premiums**_: the accumulated surplus from past finalized policies.
+2. **Borrow from active premiums**: the pure premiums of active policies are used for payouts, up to a limit defined by the _deficit ratio_ (see below).
+3. _**Junior eToken**_: takes an [internal loan](liquidity-pools.md#internal-loan) from the junior eToken, up to the _junior loan limit_.
+4. _**Senior eToken**_: takes an [internal loan](liquidity-pools.md#internal-loan) from the senior eToken, up to the _senior loan limit_.
 
 The contract tries each source of capital, going to the next one only if unable to cover the payout.
 
-When policies expire, the earned pure premium is used for:
+### Deficit ratio
 
-1. _**Repay Senior eToken debt**_: [repay the internal loan](liquidity-pools.md#internal-loan-repayment) with the Senior eToken if they were any debt.
-2. _**Repay Junior eToken debt**_: [repay the internal loan](liquidity-pools.md#internal-loan-repayment) with the Junior eToken if they were any debt.
-3. _**Reimburse borrowed active premiums**_ if active pure premiums were used for payouts.
-4. _**Accumulate as won pure premium**_: if none of the previous debts are outstanding, it accumulates the surplus as _won pure premiums_.
+The `deficitRatio` parameter indicates the proportion of the _active pure premiums_ that can be used to cover losses. Borrowing active premiums allows the account to cover losses before going to the eTokens, but it effectively postpones the impact of those losses to the liquidity providers.
+
+This parameter depends on assumptions about the timing of the losses:
+
+* In a portfolio where all the losses happen at the same time and close to the expiration, this ratio should be closer to zero, since the active premiums will soon be needed for the expiring policies.
+* In portfolios where the triggered policies happen early, this parameter can be closer to 1.
+
+### Loan limits
+
+The `jrLoanLimit` and `srLoanLimit` parameters restrict how much the premiums account can borrow from the junior and senior eTokens, respectively. A value of zero means there's no limit.
+
+## Loan repayment
+
+Internal loans are **not** repaid automatically when policies expire. Instead, a separate `repayLoans` call must be made. It repays the outstanding debt using the premium surplus in excess of the allowed deficit, repaying the senior eToken first and then the junior eToken.
+
+`repayLoans` is currently executed by permissioned operative accounts (with the `REPAY_LOANS_ROLE`), but it could in the future be opened to be executed by anyone.
