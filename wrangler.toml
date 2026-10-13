@@ -1,0 +1,8 @@
+name = "docs-okf"
+compatibility_date = "2026-09-28"
+workers_dev = true
+preview_urls = true
+
+[assets]
+directory = "./site"
+html_handling = "auto-trailing-slash"
