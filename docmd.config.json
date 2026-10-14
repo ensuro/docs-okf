@@ -27,6 +27,15 @@
   "navigation": [
     { "title": "Introduction", "path": "/", "icon": "book-open" },
     {
+      "title": "Ensuro",
+      "path": "/general/",
+      "icon": "info",
+      "children": [
+        { "title": "General Questions", "path": "/general/faq" },
+        { "title": "Risk Management", "path": "/general/risk-management" }
+      ]
+    },
+    {
       "title": "Liquidity Providers",
       "path": "/liquidity-providers/",
       "icon": "wallet",
@@ -47,23 +56,21 @@
       ]
     },
     {
-      "title": "Ensuro v3",
-      "path": "/ensuro-v3/",
+      "title": "Protocol",
+      "path": "/protocol/",
       "icon": "shield",
       "children": [
-        { "title": "Architecture", "path": "/ensuro-v3/architecture" },
-        { "title": "Roles & Permissions", "path": "/ensuro-v3/roles" },
-        { "title": "Governance", "path": "/ensuro-v3/governance" },
-        { "title": "Asset Management", "path": "/ensuro-v3/asset-management" },
-        { "title": "Policy Lifecycle", "path": "/ensuro-v3/policy-lifecycle" },
-        { "title": "Liquidity Pools", "path": "/ensuro-v3/liquidity-pools" },
-        { "title": "Policies", "path": "/ensuro-v3/policy" },
-        { "title": "Reserves", "path": "/ensuro-v3/reserves" },
-        { "title": "Premiums Accounts", "path": "/ensuro-v3/premiums-accounts" },
-        { "title": "Deployments", "path": "/ensuro-v3/deployments/" },
-        { "title": "Audits", "path": "/ensuro-v3/audits/" },
-        { "title": "General Questions", "path": "/ensuro-v3/faq" },
-        { "title": "Risk Management", "path": "/ensuro-v3/risk-management" }
+        { "title": "Architecture", "path": "/protocol/architecture" },
+        { "title": "Roles & Permissions", "path": "/protocol/roles" },
+        { "title": "Governance", "path": "/protocol/governance" },
+        { "title": "Asset Management", "path": "/protocol/asset-management" },
+        { "title": "Policy Lifecycle", "path": "/protocol/policy-lifecycle" },
+        { "title": "Liquidity Pools", "path": "/protocol/liquidity-pools" },
+        { "title": "Policies", "path": "/protocol/policy" },
+        { "title": "Reserves", "path": "/protocol/reserves" },
+        { "title": "Premiums Accounts", "path": "/protocol/premiums-accounts" },
+        { "title": "Deployments", "path": "/protocol/deployments" },
+        { "title": "Audits", "path": "/protocol/audits" }
       ]
     },
     {

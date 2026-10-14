@@ -4,6 +4,10 @@ noindex: true
 
 # Directory Update Log
 
+## 2026-10-14
+
+* **Reorganization**: Renamed the top-level `ensuro-v3/` section to `protocol/` (menu label "Protocol") and split out the general-about-Ensuro pages into a new top-level `general/` section (menu label "Ensuro", placed right after Introduction). The `General Questions` (`faq.md`) and `Risk Management` pages now live under `general/`, while `Deployments` and `Audits` remain under `protocol/`. The `deployments/` subfolder was flattened into a single `deployments.md` file.
+
 ## 2026-09-22
 
 * **Network migration**: Updated the documentation to reflect that Ensuro v3 now lives on Ethereum Mainnet and that the former Polygon (v2) deployment is deprecated and inactive. Removed the deprecated Polygon v2 deployment addresses and audit tables, updated the Offchain API base URLs (now `offchain-v3.ensuro.co` and `offchain-sepolia-v3.ensuro.co`), and replaced Polygon/MATIC references with chain-neutral or Ethereum Mainnet language across the liquidity-provider, risk-partner, offchain-API and legal documentation.
