@@ -23,7 +23,6 @@ This repository is the [Open Knowledge Format (OKF) v0.1](https://github.com/Goo
 ├── liquidity-providers/      LP documentation
 ├── risk-partners/            Risk partner documentation
 ├── offchain-apis/            REST API documentation
-├── frontend/                 Frontend security and monitoring
 └── legal/                    Legal and compliance documents
 ```
 

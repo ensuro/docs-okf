@@ -4,6 +4,10 @@ noindex: true
 
 # Directory Update Log
 
+## 2026-10-15
+
+* **Reorganization**: Removed the top-level `frontend/` section and moved its `Security and Monitoring` page into the `legal/` section (listed right after `Trust & Security in Ensuro's Ecosystem`). Swapped the sidebar icons: the `Ensuro` group now uses `shield`, and the `Protocol` group now uses `cpu`.
+
 ## 2026-10-14
 
 * **Reorganization**: Renamed the top-level `ensuro-v3/` section to `protocol/` (menu label "Protocol") and split out the general-about-Ensuro pages into a new top-level `general/` section (menu label "Ensuro", placed right after Introduction). The `General Questions` (`faq.md`) and `Risk Management` pages now live under `general/`, while `Deployments` and `Audits` remain under `protocol/`. The `deployments/` subfolder was flattened into a single `deployments.md` file.

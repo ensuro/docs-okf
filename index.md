@@ -48,5 +48,4 @@ Besides the logic related to policy pricing and resolution, each risk module sto
 - [Risk Partners](risk-partners/) — FAQ, onboarding process and product flow
 - [Reference](reference/) — Reference documentation of each smart contract
 - [Offchain APIs](offchain-apis/) — REST APIs for partner integrations
-- [Frontend](frontend/) — Security and monitoring
 - [Legal & Compliance](legal/) — Legal and compliance documents

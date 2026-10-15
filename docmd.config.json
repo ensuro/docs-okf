@@ -29,7 +29,7 @@
     {
       "title": "Ensuro",
       "path": "/general/",
-      "icon": "info",
+      "icon": "shield",
       "children": [
         { "title": "General Questions", "path": "/general/faq" },
         { "title": "Risk Management", "path": "/general/risk-management" }
@@ -58,7 +58,7 @@
     {
       "title": "Protocol",
       "path": "/protocol/",
-      "icon": "shield",
+      "icon": "cpu",
       "children": [
         { "title": "Architecture", "path": "/protocol/architecture" },
         { "title": "Roles & Permissions", "path": "/protocol/roles" },
@@ -123,19 +123,12 @@
       ]
     },
     {
-      "title": "Frontend",
-      "path": "/frontend/",
-      "icon": "smartphone",
-      "children": [
-        { "title": "Security and Monitoring", "path": "/frontend/security-and-monitoring" }
-      ]
-    },
-    {
       "title": "Legal & Compliance",
       "path": "/legal/",
       "icon": "file-text",
       "children": [
         { "title": "Trust & Security in Ensuro's Ecosystem", "path": "/legal/trust-and-security-in-ensuros-ecosystem" },
+        { "title": "Security and Monitoring", "path": "/legal/security-and-monitoring" },
         { "title": "Disclosure Statements", "path": "/legal/disclosure-statements" },
         { "title": "Ensuro Risk Disclosures", "path": "/legal/ensuro-risk-disclosures" },
         { "title": "Fees & Charges", "path": "/legal/fees-and-charges" },
