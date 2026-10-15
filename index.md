@@ -42,10 +42,10 @@ Besides the logic related to policy pricing and resolution, each risk module sto
 
 ## Documentation
 
+- [Ensuro](general/) — General questions and risk management
+- [Protocol](protocol/) — Architecture, protocol concepts, governance, deployments and audits
 - [Liquidity Providers](liquidity-providers/) — FAQ, pools overview and onboarding process
 - [Risk Partners](risk-partners/) — FAQ, onboarding process and product flow
-- [Ensuro v3](ensuro-v3/) — Architecture, protocol concepts, governance, deployments, audits and FAQ
 - [Reference](reference/) — Reference documentation of each smart contract
 - [Offchain APIs](offchain-apis/) — REST APIs for partner integrations
-- [Frontend](frontend/) — Security and monitoring
 - [Legal & Compliance](legal/) — Legal and compliance documents

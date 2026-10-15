@@ -1,6 +1,7 @@
 # Legal & Compliance
 
 * [Trust & Security in Ensuro's Ecosystem](trust-and-security-in-ensuros-ecosystem.md) - At Ensuro, trust and security are foundational to everything we do.
+* [Security and Monitoring](security-and-monitoring.md) - Ensuro prioritizes the security of our users.
 * [Disclosure Statements](disclosure-statements.md) - Disclosure statements about the Ensuro protocol, eTokens, and the risks of participating.
 * [Ensuro Risk Disclosures](ensuro-risk-disclosures.md) - By accessing or using Ensuro’s services—including our website (ensuro.co), web-based application, or any affiliated interfaces—you acknowledge and agree to the inherent risks associated with cryptographic systems, blockchain-based financial protocols, and tokenized insurance-linked products.
 * [Fees & Charges](fees-and-charges.md) - Ensuro is dedicated to maintaining transparency in all fees and charges associated with the Ensuro Protocol.

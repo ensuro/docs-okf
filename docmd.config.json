@@ -27,6 +27,15 @@
   "navigation": [
     { "title": "Introduction", "path": "/", "icon": "book-open" },
     {
+      "title": "Ensuro",
+      "path": "/general/",
+      "icon": "shield",
+      "children": [
+        { "title": "General Questions", "path": "/general/faq" },
+        { "title": "Risk Management", "path": "/general/risk-management" }
+      ]
+    },
+    {
       "title": "Liquidity Providers",
       "path": "/liquidity-providers/",
       "icon": "wallet",
@@ -47,23 +56,21 @@
       ]
     },
     {
-      "title": "Ensuro v3",
-      "path": "/ensuro-v3/",
-      "icon": "shield",
+      "title": "Protocol",
+      "path": "/protocol/",
+      "icon": "cpu",
       "children": [
-        { "title": "Architecture", "path": "/ensuro-v3/architecture" },
-        { "title": "Roles & Permissions", "path": "/ensuro-v3/roles" },
-        { "title": "Governance", "path": "/ensuro-v3/governance" },
-        { "title": "Asset Management", "path": "/ensuro-v3/asset-management" },
-        { "title": "Policy Lifecycle", "path": "/ensuro-v3/policy-lifecycle" },
-        { "title": "Liquidity Pools", "path": "/ensuro-v3/liquidity-pools" },
-        { "title": "Policies", "path": "/ensuro-v3/policy" },
-        { "title": "Reserves", "path": "/ensuro-v3/reserves" },
-        { "title": "Premiums Accounts", "path": "/ensuro-v3/premiums-accounts" },
-        { "title": "Deployments", "path": "/ensuro-v3/deployments/" },
-        { "title": "Audits", "path": "/ensuro-v3/audits/" },
-        { "title": "General Questions", "path": "/ensuro-v3/faq" },
-        { "title": "Risk Management", "path": "/ensuro-v3/risk-management" }
+        { "title": "Architecture", "path": "/protocol/architecture" },
+        { "title": "Roles & Permissions", "path": "/protocol/roles" },
+        { "title": "Governance", "path": "/protocol/governance" },
+        { "title": "Asset Management", "path": "/protocol/asset-management" },
+        { "title": "Policy Lifecycle", "path": "/protocol/policy-lifecycle" },
+        { "title": "Liquidity Pools", "path": "/protocol/liquidity-pools" },
+        { "title": "Policies", "path": "/protocol/policy" },
+        { "title": "Reserves", "path": "/protocol/reserves" },
+        { "title": "Premiums Accounts", "path": "/protocol/premiums-accounts" },
+        { "title": "Deployments", "path": "/protocol/deployments" },
+        { "title": "Audits", "path": "/protocol/audits" }
       ]
     },
     {
@@ -116,19 +123,12 @@
       ]
     },
     {
-      "title": "Frontend",
-      "path": "/frontend/",
-      "icon": "smartphone",
-      "children": [
-        { "title": "Security and Monitoring", "path": "/frontend/security-and-monitoring" }
-      ]
-    },
-    {
       "title": "Legal & Compliance",
       "path": "/legal/",
       "icon": "file-text",
       "children": [
         { "title": "Trust & Security in Ensuro's Ecosystem", "path": "/legal/trust-and-security-in-ensuros-ecosystem" },
+        { "title": "Security and Monitoring", "path": "/legal/security-and-monitoring" },
         { "title": "Disclosure Statements", "path": "/legal/disclosure-statements" },
         { "title": "Ensuro Risk Disclosures", "path": "/legal/ensuro-risk-disclosures" },
         { "title": "Fees & Charges", "path": "/legal/fees-and-charges" },
