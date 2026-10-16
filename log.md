@@ -4,6 +4,10 @@ noindex: true
 
 # Directory Update Log
 
+## 2026-10-16
+
+* **Reference refactor**: Reworked the `reference/` section to match the Ensuro v3 contracts. Removed the `AccessManager` page and the `iassetmanager/` and `extensions/` sections; added `cooler/` (ICooler, Cooler), `underwriters/` (IUnderwriter, FullTrustedUW, FullSignedUW) and `wetoken.md`. Refreshed the `policypool.md`, `etoken.md`, `riskmodule.md`, `premiumsaccount.md` and `ilpwhitelist/` pages so they only describe the main operative events and public methods, keep the parameter tables and interaction diagrams, and link to the source code and the readthedocs full documentation (no Roles sections or constructor parameters). Repointed the AccessManager links in the Roles and Governance pages to the OpenZeppelin documentation, and updated the navigation menu (`docmd.config.json`) to drop the removed pages and add the new Cooler, Underwriters and WEToken entries.
+
 ## 2026-10-15
 
 * **Reorganization**: Removed the top-level `frontend/` section and moved its `Security and Monitoring` page into the `legal/` section (listed right after `Trust & Security in Ensuro's Ecosystem`). Swapped the sidebar icons: the `Ensuro` group now uses `shield`, and the `Protocol` group now uses `cpu`.
