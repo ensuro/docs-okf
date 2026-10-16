@@ -10,7 +10,7 @@ timestamp: '2026-09-22T00:00:00+00:00'
 
 # Governance
 
-Ensuro's governance relies on [Safe](https://safe.global/) multisigs and the execution delays enforced by the [AccessManager](../reference/accessmanager.md) to provide transparency and security for the protocol.
+Ensuro's governance relies on [Safe](https://safe.global/) multisigs and the execution delays enforced by the [AccessManager](https://docs.openzeppelin.com/contracts/5.x/api/access#AccessManager) to provide transparency and security for the protocol.
 
 No major changes to the protocol will ever be made without first going through an internal vetting process that requires sign-off from several senior staff members and a public announcement with an appropriate warning period.
 
