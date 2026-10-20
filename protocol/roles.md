@@ -13,7 +13,7 @@ timestamp: '2026-09-22T00:00:00+00:00'
 
 The protocol uses the _Access Managed Proxy_ design pattern. Under this design pattern, the access control logic of permissioned methods is not defined in the code with modifiers (like `onlyOwner` or `onlyRole`). Instead, the contracts are deployed behind an [AccessManagedProxy](https://github.com/ensuro/access-managed-proxy) that delegates the access control configuration to an [AccessManager](https://docs.openzeppelin.com/contracts/5.x/api/access#AccessManager) contract.
 
-A single [AccessManager](../reference/accessmanager.md) stores, for each target contract and function, the role required to call it, together with the accounts that hold each role and the execution delay that applies to them.
+A single [AccessManager](https://docs.openzeppelin.com/contracts/5.x/api/access#AccessManager) stores, for each target contract and function, the role required to call it, together with the accounts that hold each role and the execution delay that applies to them.
 
 ## Role admins
 

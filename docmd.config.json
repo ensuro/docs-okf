@@ -80,19 +80,7 @@
       "children": [
         { "title": "PolicyPool", "path": "/reference/policypool" },
         { "title": "EToken", "path": "/reference/etoken" },
-        { "title": "RiskModule", "path": "/reference/riskmodule" },
-        { "title": "PremiumsAccount", "path": "/reference/premiumsaccount" },
-        { "title": "AccessManager", "path": "/reference/accessmanager" },
-        {
-          "title": "IAssetManager",
-          "path": "/reference/iassetmanager/",
-          "children": [
-            { "title": "Overview", "path": "/reference/iassetmanager/overview" },
-            { "title": "AAVEv3AssetManager", "path": "/reference/iassetmanager/aavev3assetmanager" },
-            { "title": "LiquidityThresholdAssetManager", "path": "/reference/iassetmanager/liquiditythresholdassetmanager" },
-            { "title": "ERC4626AssetManager", "path": "/reference/iassetmanager/erc4626assetmanager" }
-          ]
-        },
+        { "title": "WEToken", "path": "/reference/wetoken" },
         {
           "title": "ILPWhitelist",
           "path": "/reference/ilpwhitelist/",
@@ -102,12 +90,22 @@
           ]
         },
         {
-          "title": "Extensions",
-          "path": "/reference/extensions/",
+          "title": "Cooler",
+          "path": "/reference/cooler/",
           "children": [
-            { "title": "ERC4626CashFlowLender", "path": "/reference/extensions/erc4626cashflowlender" },
-            { "title": "ETokensBundleVault", "path": "/reference/extensions/etokensbundlevault" },
-            { "title": "MultiStrategyERC4626", "path": "/reference/extensions/multistrategyerc4626" }
+            { "title": "Overview", "path": "/reference/cooler/overview" },
+            { "title": "Cooler", "path": "/reference/cooler/cooler" }
+          ]
+        },
+        { "title": "PremiumsAccount", "path": "/reference/premiumsaccount" },
+        { "title": "RiskModule", "path": "/reference/riskmodule" },
+        {
+          "title": "Underwriters",
+          "path": "/reference/underwriters/",
+          "children": [
+            { "title": "Overview", "path": "/reference/underwriters/overview" },
+            { "title": "FullTrustedUW", "path": "/reference/underwriters/fulltrusteduw" },
+            { "title": "FullSignedUW", "path": "/reference/underwriters/fullsigneduw" }
           ]
         }
       ]
